@@ -7,21 +7,22 @@ public class CharacterController2D : MonoBehaviour {
 
     private Rigidbody2D _rb;
     private bool _grounded = false;
-    private bool _right = true;
-    private bool _left = false;
+    private bool _right = false;
+    private bool _left = true;
+
+    public UnityEvent levelEndEvent;
+    public Rigidbody2D _shot;
+    public bool _destructible = true;
     public float _acceleration = 20f;
     public float _maxSpeed = 10f;
     public float _jumpForce = 500f;
     public float _airControl = 0.5f;
-    public float _horizontalVelocity;
-    public UnityEvent levelEndEvent;
-
-    public Rigidbody2D _shot;
     public float _shotSpeed = 800f;
-   
+    public float _horizontalVelocity;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         _rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -36,7 +37,7 @@ public class CharacterController2D : MonoBehaviour {
 
 		//use button 0 for pc
 		//use button 16 for mac
-        if(Input.GetKey(KeyCode.Joystick1Button16) && _grounded)
+        if(Input.GetKey(KeyCode.Joystick1Button0) && _grounded)
         {
             _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, _jumpForce));
             _grounded = false;
@@ -45,12 +46,12 @@ public class CharacterController2D : MonoBehaviour {
         if(Mathf.Abs(_rb.velocity.x) < _maxSpeed)
         {
             _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, 0f));
-            if(_rb.velocity.x < 0)
+            if(_horizontalVelocity < 0)
             {
                 _right = false;
                 _left = true;
             }
-            if(_rb.velocity.x > 0)
+            if(_horizontalVelocity > 0)
             {
                 _right = true;
                 _left = false;
@@ -59,7 +60,7 @@ public class CharacterController2D : MonoBehaviour {
 
 		//use button 2 for pc
 		//use button 18 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick1Button18))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
             Rigidbody2D bullet = Instantiate(_shot, transform.position, transform.rotation) as Rigidbody2D;
             if (_right)
