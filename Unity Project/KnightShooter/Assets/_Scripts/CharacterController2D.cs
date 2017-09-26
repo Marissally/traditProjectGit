@@ -7,8 +7,8 @@ public class CharacterController2D : MonoBehaviour {
 
     private Rigidbody2D _rb;
     private bool _grounded = false;
-    private bool _right = false;
-    private bool _left = true;
+    private bool _right = true;
+    private bool _left = false;
 
     public UnityEvent levelEndEvent;
     public Rigidbody2D _shot;
@@ -37,7 +37,7 @@ public class CharacterController2D : MonoBehaviour {
 
 		//use button 0 for pc
 		//use button 16 for mac
-        if(Input.GetKey(KeyCode.Joystick1Button0) && _grounded)
+        if(Input.GetKeyDown(KeyCode.Joystick1Button0) && _grounded)
         {
             _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, _jumpForce));
             _grounded = false;

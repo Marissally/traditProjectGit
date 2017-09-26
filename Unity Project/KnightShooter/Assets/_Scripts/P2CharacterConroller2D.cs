@@ -38,7 +38,7 @@ public class P2CharacterConroller2D : MonoBehaviour {
 
 		//use button 0 for pc
 		//use button 16 for mac
-        if (Input.GetKey(KeyCode.Joystick2Button0) && _grounded)
+        if (Input.GetKeyDown(KeyCode.Joystick2Button0) && _grounded)
         {
             _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, _jumpForce));
             _grounded = false;
