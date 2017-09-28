@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour {
     void OnGUI ()
     {
         winStyle.fontSize = 50;
+
         GUI.Box(new Rect(10, 10, 100, 100), (P1wins.ToString()),winStyle);
         GUI.Box(new Rect(1875, 10, 100, 100), (P2wins.ToString()),winStyle);
         if (showText)
@@ -37,7 +38,7 @@ public class GameController : MonoBehaviour {
         players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         if (players.Count == 0)
         {
-            winText = "Draw!! Press A to continue";
+            winText = "Draw!! Press Start to continue";
             showText = true;
             LevelEnd();
         }
@@ -45,7 +46,7 @@ public class GameController : MonoBehaviour {
         {
             if (players[0].name == "Player 1")
             {
-                winText = "Player 1 Wins!! Press A to continue";
+                winText = "Player 1 Wins!! Press Start to continue";
                 showText = true;
                 if (!pointsDelivered)
                 { P1wins += 1; pointsDelivered = true; }
@@ -53,7 +54,7 @@ public class GameController : MonoBehaviour {
             }
             if (players[0].name == "Player 2")
             {
-                winText = "Player 2 Wins!! Press A to continue";
+                winText = "Player 2 Wins!! Press Start to continue";
                 showText = true;
                 if (!pointsDelivered)
                 { P2wins += 1; pointsDelivered = true; }
@@ -66,7 +67,7 @@ public class GameController : MonoBehaviour {
     {
         //use button 7 for pc
         //use button 9 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick2Button7))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.Joystick2Button9))
         {
             SceneManager.LoadScene(0);
             showText = false;

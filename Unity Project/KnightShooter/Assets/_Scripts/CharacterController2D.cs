@@ -30,6 +30,12 @@ public class CharacterController2D : MonoBehaviour {
 	void Update () {
         _horizontalVelocity = Input.GetAxis("Horizontal_1");
 
+		if (_left) {
+			GetComponentInChildren<SpriteRenderer> ().flipX = false;
+		}
+		if (_right) {
+			GetComponentInChildren<SpriteRenderer> ().flipX = true;
+		}
         if (!_grounded)
         {
             _horizontalVelocity *= _airControl;
@@ -37,7 +43,7 @@ public class CharacterController2D : MonoBehaviour {
 
 		//use button 0 for pc
 		//use button 16 for mac
-        if(Input.GetKeyDown(KeyCode.Joystick1Button0) && _grounded)
+        if(Input.GetKeyDown(KeyCode.Joystick1Button16) && _grounded)
         {
             _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, _jumpForce));
             _grounded = false;
@@ -60,7 +66,7 @@ public class CharacterController2D : MonoBehaviour {
 
 		//use button 2 for pc
 		//use button 18 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick1Button2))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button18))
         {
             Rigidbody2D bullet = Instantiate(_shot, transform.position, transform.rotation) as Rigidbody2D;
             if (_right)
