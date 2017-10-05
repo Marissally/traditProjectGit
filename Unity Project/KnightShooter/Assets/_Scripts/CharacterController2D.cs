@@ -12,6 +12,10 @@ public class CharacterController2D : MonoBehaviour {
 
     public UnityEvent levelEndEvent;
     public Rigidbody2D _shot;
+	public Rigidbody2D _shotgun;
+	public Rigidbody2D _rocket;
+	public int ammo;
+	public bool shield = false;
     public bool _destructible = true;
     public float _acceleration = 20f;
     public float _maxSpeed = 10f;
@@ -19,6 +23,8 @@ public class CharacterController2D : MonoBehaviour {
     public float _airControl = 0.5f;
     public float _shotSpeed = 800f;
     public float _horizontalVelocity;
+	public string shotType = "Default";
+
 
 
     // Use this for initialization
@@ -68,15 +74,38 @@ public class CharacterController2D : MonoBehaviour {
 		//use button 18 for mac
         if (Input.GetKeyDown(KeyCode.Joystick1Button18))
         {
-            Rigidbody2D bullet = Instantiate(_shot, transform.position, transform.rotation) as Rigidbody2D;
-            if (_right)
-            {
-                bullet.AddForce(new Vector2(_shotSpeed, 0f));
-            }
-            if (_left)
-            {
-                bullet.AddForce(new Vector2(_shotSpeed * -1, 0f));
-            }
+			if (shotType == "Default") 
+			{
+				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
+				if (_right) {
+					bullet.AddForce (new Vector2 (_shotSpeed, 0f));
+				}
+				if (_left) {
+					bullet.AddForce (new Vector2 (_shotSpeed * -1, 0f));
+				}
+			}
+
+			if (shotType == "Shotgun") 
+			{
+				Rigidbody2D bullet = Instantiate (_shotgun, transform.position, transform.rotation) as Rigidbody2D;
+				if (_right) {
+					bullet.AddForce (new Vector2 (_shotSpeed, 0f));
+				}
+				if (_left) {
+					bullet.AddForce (new Vector2 (_shotSpeed * -1, 0f));
+				}
+			}
+
+			if (shotType == "Rocket") 
+			{
+				Rigidbody2D bullet = Instantiate (_rocket, transform.position, transform.rotation) as Rigidbody2D;
+				if (_right) {
+					bullet.AddForce (new Vector2 (_shotSpeed, 0f));
+				}
+				if (_left) {
+					bullet.AddForce (new Vector2 (_shotSpeed * -1, 0f));
+				}
+			}
         }
     }
 

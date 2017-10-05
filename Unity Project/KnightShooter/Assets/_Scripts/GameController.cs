@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-    void OnGUI ()
+    void OnGUI ()		//Change to canvas GUI
     {
         winStyle.fontSize = 50;
 
