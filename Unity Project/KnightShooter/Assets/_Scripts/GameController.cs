@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         GameObject canvas = GameObject.Find("Canvas");
+        DontDestroyOnLoad(canvas);
         Text[] textList = canvas.GetComponentsInChildren<Text>();
         players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         pointsDelivered = false;
