@@ -7,39 +7,36 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
     public List<GameObject> players;
+    public List<Text> textList;
     public string winText;
     private int P1wins;
     private int P2wins;
-    public bool showText = false;
-    private GUIStyle winStyle = new GUIStyle();
     public bool pointsDelivered;
 
     // Use this for initialization
     void Start () {
+        GameObject canvas = GameObject.Find("Canvas");
+        Text[] textList = canvas.GetComponentsInChildren<Text>();
         players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
-        showText = false;
         pointsDelivered = false;
-        
+        textList[2].enabled = false;
     }
 	
 	// Update is called once per frame
-    void OnGUI ()		//Change to canvas GUI
+    void OnGUI ()
     {
-        winStyle.fontSize = 50;
-
-        GUI.Box(new Rect(10, 10, 100, 100), (P1wins.ToString()),winStyle);
-        GUI.Box(new Rect(1875, 10, 100, 100), (P2wins.ToString()),winStyle);
-        if (showText)
-        {
-            GUI.TextField(new Rect(460, 300, 1000, 100), winText);
-        }
+        textList[0].text = P1wins.ToString();
+        textList[1].text = P2wins.ToString();
+        textList[2].text = winText;
     }
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         if (players.Count == 0)
         {
             winText = "Draw!! Press Start to continue";
-            showText = true;
+            textList[2].enabled = true;
             LevelEnd();
         }
         if (players.Count == 1)
@@ -47,7 +44,7 @@ public class GameController : MonoBehaviour {
             if (players[0].name == "Player 1")
             {
                 winText = "Player 1 Wins!! Press Start to continue";
-                showText = true;
+                textList[2].enabled = true;
                 if (!pointsDelivered)
                 { P1wins += 1; pointsDelivered = true; }
                 LevelEnd();
@@ -55,7 +52,7 @@ public class GameController : MonoBehaviour {
             if (players[0].name == "Player 2")
             {
                 winText = "Player 2 Wins!! Press Start to continue";
-                showText = true;
+                textList[2].enabled = true;
                 if (!pointsDelivered)
                 { P2wins += 1; pointsDelivered = true; }
                 LevelEnd();
@@ -70,7 +67,7 @@ public class GameController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.Joystick2Button9))
         {
             SceneManager.LoadScene(0);
-            showText = false;
+            textList[2].enabled = false;
         }
     }
 }
