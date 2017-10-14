@@ -23,6 +23,7 @@ public class CharacterController2D : MonoBehaviour {
     public float _airControl = 0.5f;
     public float _shotSpeed = 800f;
     public float _horizontalVelocity;
+    public float _verticalAim;
 	public string shotType = "Default";
 
 
@@ -35,6 +36,7 @@ public class CharacterController2D : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         _horizontalVelocity = Input.GetAxis("Horizontal_1");
+        _verticalAim = Input.GetAxis("Vertical_1");
 
 		if (_left) {
 			GetComponentInChildren<SpriteRenderer> ().flipX = false;
@@ -49,7 +51,7 @@ public class CharacterController2D : MonoBehaviour {
 
 		//use button 0 for pc
 		//use button 16 for mac
-        if(Input.GetKeyDown(KeyCode.Joystick1Button16) && _grounded)
+        if(Input.GetKeyDown(KeyCode.Joystick1Button0) && _grounded)
         {
             _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, _jumpForce));
             _grounded = false;
@@ -72,38 +74,62 @@ public class CharacterController2D : MonoBehaviour {
 
 		//use button 2 for pc
 		//use button 18 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick1Button18))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
 			if (shotType == "Default") 
 			{
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
-				if (_right) {
-					bullet.AddForce (new Vector2 (_shotSpeed, 0f));
+                if (_verticalAim == 1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed));
+                }
+                else if (_verticalAim == -1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                }
+				else if (_right) {
+					bullet.AddForce (new Vector2 (_shotSpeed, _shotSpeed * _verticalAim));
 				}
-				if (_left) {
-					bullet.AddForce (new Vector2 (_shotSpeed * -1, 0f));
+				else if (_left) {
+					bullet.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim));
 				}
 			}
 
 			if (shotType == "Shotgun") 
 			{
 				Rigidbody2D bullet = Instantiate (_shotgun, transform.position, transform.rotation) as Rigidbody2D;
-				if (_right) {
-					bullet.AddForce (new Vector2 (_shotSpeed, 0f));
+                if (_verticalAim == 1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed));
+                }
+                else if (_verticalAim == -1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                }
+                else if (_right) {
+					bullet.AddForce (new Vector2 (_shotSpeed, _shotSpeed * _verticalAim));
 				}
-				if (_left) {
-					bullet.AddForce (new Vector2 (_shotSpeed * -1, 0f));
+				else if (_left) {
+					bullet.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim));
 				}
 			}
 
 			if (shotType == "Rocket") 
 			{
 				Rigidbody2D bullet = Instantiate (_rocket, transform.position, transform.rotation) as Rigidbody2D;
-				if (_right) {
-					bullet.AddForce (new Vector2 (_shotSpeed, 0f));
+                if (_verticalAim == 1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed));
+                }
+                else if (_verticalAim == -1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                }
+                else if (_right) {
+					bullet.AddForce (new Vector2 (_shotSpeed, _shotSpeed * _verticalAim));
 				}
-				if (_left) {
-					bullet.AddForce (new Vector2 (_shotSpeed * -1, 0f));
+				else if (_left) {
+					bullet.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim));
 				}
 			}
         }

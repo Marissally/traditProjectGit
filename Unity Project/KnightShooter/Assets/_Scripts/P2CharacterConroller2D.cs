@@ -12,6 +12,10 @@ public class P2CharacterConroller2D : MonoBehaviour {
 
     public UnityEvent levelEndEvent;
     public Rigidbody2D _shot;
+    public Rigidbody2D _shotgun;
+    public Rigidbody2D _rocket;
+    public int ammo;
+    public bool shield = false;
     public bool _destructible = true;
     public float _acceleration = 20f;
     public float _maxSpeed = 10f;
@@ -19,6 +23,8 @@ public class P2CharacterConroller2D : MonoBehaviour {
     public float _airControl = 0.5f;
     public float _shotSpeed = 800f;
     public float _horizontalVelocity;
+    public float _verticalAim;
+    public string shotType = "Default";
 
     // Use this for initialization
     void Start()
@@ -30,7 +36,7 @@ public class P2CharacterConroller2D : MonoBehaviour {
     void Update()
     {
         _horizontalVelocity = Input.GetAxis("Horizontal_2");
-
+        _verticalAim = Input.GetAxis("Vertical_2");
 
 		if (_left) {
 			GetComponentInChildren<SpriteRenderer> ().flipX = true;
@@ -45,7 +51,7 @@ public class P2CharacterConroller2D : MonoBehaviour {
 
 		//use button 0 for pc
 		//use button 16 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick2Button16) && _grounded)
+        if (Input.GetKeyDown(KeyCode.Joystick2Button0) && _grounded)
         {
             _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, _jumpForce));
             _grounded = false;
@@ -68,16 +74,69 @@ public class P2CharacterConroller2D : MonoBehaviour {
 
 		//use button 2 for pc
 		//use button 18 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick2Button18))
+        if (Input.GetKeyDown(KeyCode.Joystick2Button2))
         {
-            Rigidbody2D bullet = Instantiate(_shot, transform.position, transform.rotation) as Rigidbody2D;
-            if (_right)
+            if (shotType == "Default")
             {
-                bullet.AddForce(new Vector2(_shotSpeed, 0f));
+                Rigidbody2D bullet = Instantiate(_shot, transform.position, transform.rotation) as Rigidbody2D;
+                if (_verticalAim == 1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed));
+                }
+                else if (_verticalAim == -1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                }
+                else if (_right)
+                {
+                    bullet.AddForce(new Vector2(_shotSpeed, _shotSpeed * _verticalAim));
+                }
+                else if (_left)
+                {
+                    bullet.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * _verticalAim));
+                }
             }
-            if (_left)
+
+            if (shotType == "Shotgun")
             {
-                bullet.AddForce(new Vector2(_shotSpeed * -1, 0f));
+                Rigidbody2D bullet = Instantiate(_shotgun, transform.position, transform.rotation) as Rigidbody2D;
+                if (_verticalAim == 1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed));
+                }
+                else if (_verticalAim == -1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                }
+                else if (_right)
+                {
+                    bullet.AddForce(new Vector2(_shotSpeed, _shotSpeed * _verticalAim));
+                }
+                else if (_left)
+                {
+                    bullet.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * _verticalAim));
+                }
+            }
+
+            if (shotType == "Rocket")
+            {
+                Rigidbody2D bullet = Instantiate(_rocket, transform.position, transform.rotation) as Rigidbody2D;
+                if (_verticalAim == 1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed));
+                }
+                else if (_verticalAim == -1)
+                {
+                    bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                }
+                else if (_right)
+                {
+                    bullet.AddForce(new Vector2(_shotSpeed, _shotSpeed * _verticalAim));
+                }
+                else if (_left)
+                {
+                    bullet.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * _verticalAim));
+                }
             }
         }
     }
