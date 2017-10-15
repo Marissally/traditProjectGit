@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
     void Start () {
         GameObject canvas = GameObject.Find("Canvas");
         DontDestroyOnLoad(canvas);
-        Text[] textList = canvas.GetComponentsInChildren<Text>();
+        textList = new List<Text>(canvas.GetComponentsInChildren<Text>());
         players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         pointsDelivered = false;
         textList[2].enabled = false;
@@ -47,7 +47,10 @@ public class GameController : MonoBehaviour {
                 winText = "Player 1 Wins!! Press Start to continue";
                 textList[2].enabled = true;
                 if (!pointsDelivered)
-                { P1wins += 1; pointsDelivered = true; }
+                {
+                    P1wins += 1;
+                    pointsDelivered = true;
+                }
                 LevelEnd();
             }
             if (players[0].name == "Player 2")
@@ -55,7 +58,32 @@ public class GameController : MonoBehaviour {
                 winText = "Player 2 Wins!! Press Start to continue";
                 textList[2].enabled = true;
                 if (!pointsDelivered)
-                { P2wins += 1; pointsDelivered = true; }
+                {
+                    P2wins += 1;
+                    pointsDelivered = true;
+                }
+                LevelEnd();
+            }
+            if (players[0].name == "Player 3")
+            {
+                winText = "Player 3 Wins!! Press Start to continue";
+                textList[2].enabled = true;
+                if (!pointsDelivered)
+                {
+                    P1wins += 1;
+                    pointsDelivered = true;
+                }
+                LevelEnd();
+            }
+            if (players[0].name == "Player 4")
+            {
+                winText = "Player 4 Wins!! Press Start to continue";
+                textList[2].enabled = true;
+                if (!pointsDelivered)
+                {
+                    P2wins += 1;
+                    pointsDelivered = true;
+                }
                 LevelEnd();
             }
         }
@@ -65,7 +93,7 @@ public class GameController : MonoBehaviour {
     {
         //use button 7 for pc
         //use button 9 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.Joystick2Button9))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick2Button7))
         {
             SceneManager.LoadScene(0);
             textList[2].enabled = false;

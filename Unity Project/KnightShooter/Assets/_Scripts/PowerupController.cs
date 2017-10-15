@@ -8,11 +8,12 @@ public class PowerupController : MonoBehaviour {
     //1 is shotgun
     //2 is rocket
     //3 is shield
+    public Rigidbody2D _bullet;
     public Rigidbody2D _shotgunPower;
     public Rigidbody2D _rocketPower;
     public Rigidbody2D _shieldPower;
     public int currentPower = 0;
-	public int timer = 30;
+	public int timer = 30000000;
 	private int baseTime;
 	public List<Rigidbody2D> powerups= new List<Rigidbody2D>(4);
     private System.Random r;
@@ -20,14 +21,15 @@ public class PowerupController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         baseTime = DateTime.UtcNow.Millisecond;
-        powerups[1] = _shotgunPower;
-        powerups[2] = _rocketPower;
-        powerups[3] = _shieldPower;
+        powerups.Add(_bullet);
+        powerups.Add(_shotgunPower);
+        powerups.Add(_rocketPower);
+        powerups.Add(_shieldPower);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        int p = r.Next(1, 4);
+        int p = r.Next(1, 3);
         
         int check = DateTime.UtcNow.Millisecond - baseTime;
         if (check > timer && currentPower == 0)
