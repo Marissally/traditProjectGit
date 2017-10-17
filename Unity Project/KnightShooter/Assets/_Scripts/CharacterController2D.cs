@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class CharacterController2D : MonoBehaviour {
 
     private Rigidbody2D _rb;
+	private Animator _anim;
     private bool _grounded = false;
     private bool _right = true;
     private bool _left = false;
@@ -31,6 +32,8 @@ public class CharacterController2D : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _rb = GetComponent<Rigidbody2D>();
+		_anim = GetComponentInChildren<Animator> ();
+		_anim.SetBool ("WalkB", false);
 	}
 	
 	// Update is called once per frame
@@ -65,12 +68,20 @@ public class CharacterController2D : MonoBehaviour {
             {
                 _right = false;
                 _left = true;
+				_anim.SetBool ("WalkB", true);
+
             }
             if(_horizontalVelocity > 0)
             {
                 _right = true;
                 _left = false;
+				_anim.SetBool ("WalkB", true);
+
             }
+			if (_horizontalVelocity == 0) {
+				_anim.SetBool ("WalkB", false);
+			}
+
         }
 
 		//use button 2 for pc

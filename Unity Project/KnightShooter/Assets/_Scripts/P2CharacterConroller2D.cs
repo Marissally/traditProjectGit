@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class P2CharacterConroller2D : MonoBehaviour {
 
     private Rigidbody2D _rb;
+	private Animator _anim;
     private bool _grounded = false;
     private bool _right = false;
     private bool _left = true;
@@ -30,6 +31,8 @@ public class P2CharacterConroller2D : MonoBehaviour {
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+		_anim = GetComponentInChildren<Animator> ();
+		_anim.SetBool ("WalkR", false);
     }
 
     // Update is called once per frame
@@ -39,10 +42,10 @@ public class P2CharacterConroller2D : MonoBehaviour {
         _verticalAim = Input.GetAxis("Vertical_2");
 
 		if (_left) {
-			GetComponentInChildren<SpriteRenderer> ().flipX = true;
+			GetComponentInChildren<SpriteRenderer> ().flipX = false;
 		}
 		if (_right) {
-			GetComponentInChildren<SpriteRenderer> ().flipX = false;
+			GetComponentInChildren<SpriteRenderer> ().flipX = true;
 		}
         if (!_grounded)
         {
@@ -64,12 +67,19 @@ public class P2CharacterConroller2D : MonoBehaviour {
             {
                 _right = false;
                 _left = true;
+				_anim.SetBool ("WalkR", true);
+
             }
             if (_horizontalVelocity > 0)
             {
                 _right = true;
                 _left = false;
+				_anim.SetBool ("WalkR", true);
+
             }
+			if (_horizontalVelocity == 0) {
+				_anim.SetBool ("WalkR", false);
+			}
         }
 
 		//use button 2 for pc
