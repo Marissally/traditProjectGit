@@ -48,6 +48,7 @@ public class CharacterController2D : MonoBehaviour {
         {
             _horizontalVelocity *= _airControl;
         }
+			
 
 		//use button 0 for pc
 		//use button 16 for mac
