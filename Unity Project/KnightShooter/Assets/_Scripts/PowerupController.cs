@@ -19,6 +19,7 @@ public class PowerupController : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         baseTime = DateTime.UtcNow.Millisecond;
+		powerups.Add(new Rigidbody2D());
         powerups.Add(_shotgunPower);
         powerups.Add(_rocketPower);
         powerups.Add(_shieldPower);
@@ -26,7 +27,7 @@ public class PowerupController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		int p = UnityEngine.Random.Range(1, 3);
+		int p = UnityEngine.Random.Range(1, 4);
         
         int check = DateTime.UtcNow.Millisecond - baseTime;
         if (check > timer && currentPower == 0)
