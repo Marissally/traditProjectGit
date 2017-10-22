@@ -55,7 +55,7 @@ public class CharacterController2D : MonoBehaviour {
 
 		//use button 0 for pc
 		//use button 16 for mac
-        if(Input.GetKeyDown(KeyCode.Joystick1Button16) && _grounded)
+        if(Input.GetKeyDown(KeyCode.Joystick1Button0) && _grounded)
         {
             _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, _jumpForce));
             _grounded = false;
@@ -86,11 +86,11 @@ public class CharacterController2D : MonoBehaviour {
 
 		//use button 2 for pc
 		//use button 18 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick1Button18))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button2))
         {
 			if (shotType == "Default" || ammo == 0) 
 			{
-				shotType = "Default";
+                shotType = "Default";
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
                 if (_verticalAim == 1)
                 {
@@ -116,25 +116,26 @@ public class CharacterController2D : MonoBehaviour {
                 if (_verticalAim == 1)
                 {
                     bullet.AddForce(new Vector2(0f, _shotSpeed));
-					bullet2.AddForce(new Vector2(1f, _shotSpeed));
-					bullet3.AddForce(new Vector2(-1f, _shotSpeed));
+					bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed));
+					bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed));
                 }
                 else if (_verticalAim == -1)
                 {
                     bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
-					bullet2.AddForce(new Vector2(1f, _shotSpeed * -1));
-					bullet3.AddForce(new Vector2(-1f, _shotSpeed * -1));
+					bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed * -1));
+					bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * -1));
                 }
                 else if (_right) {
 					bullet.AddForce (new Vector2 (_shotSpeed, _shotSpeed * _verticalAim));
-					bullet2.AddForce (new Vector2 (_shotSpeed, _shotSpeed * _verticalAim +1));
-					bullet3.AddForce (new Vector2 (_shotSpeed, _shotSpeed * _verticalAim -1));
+					bullet2.AddForce (new Vector2 (_shotSpeed * _verticalAim, _shotSpeed * _verticalAim));
+					bullet3.AddForce (new Vector2 (_shotSpeed * _verticalAim, _shotSpeed * _verticalAim));
 				}
 				else if (_left) {
 					bullet.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim));
-					bullet2.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim +1));
-					bullet3.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim -1));
+					bullet2.AddForce (new Vector2 (_shotSpeed * (_verticalAim * -1), _shotSpeed * _verticalAim));
+					bullet3.AddForce (new Vector2 (_shotSpeed * (_verticalAim * -1), _shotSpeed * _verticalAim));
 				}
+                ammo--;
 			}
 
 			if (shotType == "Rocket" && ammo != 0) 
@@ -154,6 +155,7 @@ public class CharacterController2D : MonoBehaviour {
 				else if (_left) {
 					bullet.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim));
 				}
+                ammo--;
 			}
         }
     }
@@ -166,31 +168,33 @@ public class CharacterController2D : MonoBehaviour {
             {
                 _grounded = true;
             }
+        }	
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Powerup")
+        {
+            //check for powerup
+            if (collision.gameObject.name == "shotgunPower(Clone)")
+            {
+                Destroy(collision.gameObject);
+                shotType = "Shotgun";
+                ammo = 12;
+            }
+
+            if (collision.gameObject.name == "rocketPower(Clone)")
+            {
+                Destroy(collision.gameObject);
+                shotType = "Rocket";
+                ammo = 2;
+            }
+
+            if (collision.gameObject.name == "shieldPower(Clone)")
+            {
+                Destroy(collision.gameObject);
+                shield = true;
+            }
         }
-
-		if (collision.gameObject.tag == "Powerup") 
-		{
-			//check for powerup
-			if (collision.gameObject.name == "shotgunPower(Clone)") 
-			{
-				Destroy (collision.gameObject);
-				shotType = "Shotgun";
-				ammo = 12;
-			}
-
-			if (collision.gameObject.name == "rocketPower(Clone)") 
-			{
-				Destroy (collision.gameObject);
-				shotType = "Rocket";
-				ammo = 2;
-			}
-
-			if (collision.gameObject.name == "shieldPower(Clone)") 
-			{
-				Destroy (collision.gameObject);
-				//durability + 1
-			}
-		}
-			
     }
 }

@@ -12,13 +12,14 @@ public class PowerupController : MonoBehaviour {
     public Rigidbody2D _rocketPower;
     public Rigidbody2D _shieldPower;
     public int currentPower = 0;
-	public int timer = 30000000;
-	private int baseTime;
-	public List<Rigidbody2D> powerups= new List<Rigidbody2D>(4);
+	public int timer = 30;
+	public DateTime baseTime;
+    public TimeSpan check;
+	public List<Rigidbody2D> powerups = new List<Rigidbody2D>(4);
 
     // Use this for initialization
 	void Start () {
-        baseTime = DateTime.UtcNow.Millisecond;
+        baseTime = DateTime.UtcNow;
 		powerups.Add(new Rigidbody2D());
         powerups.Add(_shotgunPower);
         powerups.Add(_rocketPower);
@@ -28,14 +29,21 @@ public class PowerupController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		int p = UnityEngine.Random.Range(1, 4);
-        
-        int check = DateTime.UtcNow.Millisecond - baseTime;
-        if (check > timer && currentPower == 0)
+
+        check = DateTime.UtcNow.Subtract(baseTime);
+        if (check.Seconds > timer && currentPower == 0)
         {
             Rigidbody2D powerup = Instantiate(powerups[p], transform.position, transform.rotation) as Rigidbody2D;
-            baseTime = DateTime.UtcNow.Millisecond;
-            check = 0;
+            baseTime = DateTime.UtcNow;
 			currentPower = p;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Powerup")
+        {
+            currentPower = 0;
         }
     }
 }

@@ -20,7 +20,20 @@ public class P2BulletController : MonoBehaviour {
         {
             return;
         }
-        if ((collision.gameObject.tag == "Player") || (collision.gameObject.tag == "DestructiblePlat"))
+        if (collision.gameObject.name == "Player 1")
+        {
+            CharacterController2D player1 = collision.gameObject.GetComponent<CharacterController2D>();
+            if (player1.shield == true)
+            {
+                player1.shield = false;
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+            }
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "DestructiblePlat")
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
