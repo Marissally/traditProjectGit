@@ -21,25 +21,22 @@ public class P2RocketController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if ((collision.gameObject.tag == "Player") || (collision.gameObject.tag == "DestructiblePlat" || (collision.gameObject.tag == "IndestructiblePlat")))
+		if ((collision.gameObject.tag == "Player") || (collision.gameObject.tag == "DestructiblePlat") || (collision.gameObject.tag == "IndestructiblePlat") || (collision.gameObject.tag == "DamagablePlat"))
         {
-            if (collision.gameObject.name == "Player 2")
-            {
-                return;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-            Physics2D.OverlapCircle(transform.position, 1.5f, new ContactFilter2D(), explodeRadius);
+			if (collision.gameObject.name == "Player 2") {
+				return;
+			} 
+			else {
+				Destroy (gameObject);
+			}
+			Physics2D.OverlapCircle(transform.position, 1.5f, new ContactFilter2D(), explodeRadius);
 
-            foreach (Collider2D o in explodeRadius)
-            {
-                if ((o.gameObject.tag == "Player") || (o.gameObject.tag == "DestructiblePlat"))
-                {
-                    Destroy(o.gameObject);
-                }
-            }
+			foreach (Collider2D o in explodeRadius) {
+				if ((o.gameObject.tag == "Player") || (o.gameObject.tag == "DestructiblePlat") || (o.gameObject.tag == "DamagablePlat")) 
+				{
+					Destroy (o.gameObject);	
+				}
+			}
         }
     }
 }

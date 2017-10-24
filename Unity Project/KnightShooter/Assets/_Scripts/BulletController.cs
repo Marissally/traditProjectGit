@@ -33,11 +33,19 @@ public class BulletController : MonoBehaviour {
             }
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "DestructiblePlat")
+        if (collision.gameObject.tag == "DamagablePlat")
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+			PlatformController platform = collision.gameObject.GetComponent<PlatformController> ();
+			if (platform.durability > 0) {
+				platform.durability--;
+				Destroy (gameObject);
+			}
         }
+		if (collision.gameObject.tag == "DestructiblePlat") 
+		{
+			Destroy (gameObject);
+			Destroy (collision.gameObject);
+		}
         if (collision.gameObject.tag == "IndestructiblePlat")
         {
             Destroy(gameObject);

@@ -13,7 +13,6 @@ public class P2CharacterConroller2D : MonoBehaviour {
 
     public UnityEvent levelEndEvent;
     public Rigidbody2D _shot;
-    public Rigidbody2D _shotgun;
     public Rigidbody2D _rocket;
     public int ammo;
     public bool shield = false;

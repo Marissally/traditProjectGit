@@ -33,6 +33,14 @@ public class P2BulletController : MonoBehaviour {
             }
             Destroy(gameObject);
         }
+		if (collision.gameObject.tag == "DamagablePlat")
+		{
+			PlatformController platform = collision.gameObject.GetComponent<PlatformController> ();
+			if (platform.durability > 0) {
+				platform.durability--;
+				Destroy (gameObject);
+			}
+		}
         if (collision.gameObject.tag == "DestructiblePlat")
         {
             Destroy(collision.gameObject);

@@ -18,25 +18,22 @@ public class RocketController : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if ((collision.gameObject.tag == "Player") || (collision.gameObject.tag == "DestructiblePlat" || (collision.gameObject.tag == "IndestructiblePlat")))
+		if ((collision.gameObject.tag == "Player") || (collision.gameObject.tag == "DestructiblePlat") || (collision.gameObject.tag == "IndestructiblePlat") || (collision.gameObject.tag == "DamagablePlat"))
         {
-            if(collision.gameObject.name == "Player 1")
-            {
-                return;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+			if (collision.gameObject.name == "Player 1") {
+				return;
+			} 
+			else {
+				Destroy (gameObject);
+			}
 			Physics2D.OverlapCircle(transform.position, 1.5f, new ContactFilter2D(), explodeRadius);
 
 			foreach (Collider2D o in explodeRadius) {
-				if ((o.gameObject.tag == "Player") || (o.gameObject.tag == "DestructiblePlat")) 
+				if ((o.gameObject.tag == "Player") || (o.gameObject.tag == "DestructiblePlat") || (o.gameObject.tag == "DamagablePlat")) 
 				{
 					Destroy (o.gameObject);	
 				}
 			}
-			
         }
     }
 }
