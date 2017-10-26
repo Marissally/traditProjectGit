@@ -27,6 +27,8 @@ public class CharacterController2D : MonoBehaviour {
 	public string shotType = "Default";
     public KeyCode jumpButton;
     public KeyCode shootButton;
+    public string _horizontalControl;
+    public string _verticalControl;
     public string walking;
 
 
@@ -40,8 +42,8 @@ public class CharacterController2D : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        _horizontalVelocity = Input.GetAxis("Horizontal_1");
-        _verticalAim = Input.GetAxis("Vertical_1");
+        _horizontalVelocity = Input.GetAxis(_horizontalControl);
+        _verticalAim = Input.GetAxis(_verticalControl);
 
 		if (_left) {
 			this.GetComponentInChildren<SpriteRenderer> ().flipX = false;
