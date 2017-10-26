@@ -66,14 +66,14 @@ public class CharacterController2D : MonoBehaviour {
             pistol.flipX = true;
             bazooka.flipX = true;
             shotgun.flipX = true;
-            shieldImage.flipX = false;
+            shieldImage.flipX = true;
 		}
 		if (_right) {
 			this.GetComponentInChildren<SpriteRenderer> ().flipX = true;
             pistol.flipX = false;
             bazooka.flipX = false;
             shotgun.flipX = false;
-            shieldImage.flipX = true;
+            shieldImage.flipX = false;
 		}
         if (!_grounded)
         {

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class checkReadied : MonoBehaviour {
 
@@ -23,7 +22,7 @@ public class checkReadied : MonoBehaviour {
         {
             //load random level scene
             //int p = UnityEngine.Random.Range(2, 4);
-			SceneManager.LoadScene(3);
+            SceneLoader.LoadByIndex(2);
         }
     }
 }
