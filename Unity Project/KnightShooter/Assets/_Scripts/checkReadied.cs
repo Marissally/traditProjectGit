@@ -17,7 +17,8 @@ public class checkReadied : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (P1View.readied && P2View.readied && P3View.readied && P4View.readied)
+        //if (P1View.readied && P2View.readied && P3View.readied && P4View.readied)
+        if (P1View.readied && P2View.readied)
         {
             //load random level scene
             //int p = UnityEngine.Random.Range(2, 4);

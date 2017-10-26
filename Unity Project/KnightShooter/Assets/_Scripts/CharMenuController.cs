@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharMenuController : MonoBehaviour {
 
@@ -10,7 +11,6 @@ public class CharMenuController : MonoBehaviour {
 	public bool readied;
 	public Image readyImage;
 	public GameObject Player;
-	private LoadScene SceneLoader;
     public KeyCode confirm;
     public KeyCode cancel;
 
@@ -18,8 +18,8 @@ public class CharMenuController : MonoBehaviour {
 	void Start ()
     {
 		readied = false;
-		//readyImage = GameObject.Find ("readyImage").GetComponent<Image>();
-	}
+        //readyImage = GameObject.Find ("readyImage").GetComponent<Image>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -38,17 +38,23 @@ public class CharMenuController : MonoBehaviour {
 
 		if (Input.GetKeyDown (cancel)) 
 		{
+            readyImage.color = new Color32(210, 210, 210, 100);
+		}
+
+        if (Input.GetKeyUp (cancel))
+        {
+            readyImage.color = new Color32(255, 255, 255, 100);
+
             if (readied == true)
             {
-                readyImage.color = new Color32(255, 255, 255, 100);
                 readied = false;
                 Player.SetActive(false);
             }
 
             else
             {
-                SceneLoader.LoadByIndex(0);
+                SceneManager.LoadScene(0);
             }
-		}
+        }
 	}
 }

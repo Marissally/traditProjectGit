@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class P2CharacterCardController : MonoBehaviour
-{
+public class P3CharacterCardController : MonoBehaviour {
 
     public Image wins1;
     public Image wins2;
@@ -15,9 +14,8 @@ public class P2CharacterCardController : MonoBehaviour
     private variableTracker varTrack;
     public CharacterController2D characterController;
 
-    // Use this for initialization
-    void Start()
-    {
+	// Use this for initialization
+	void Start () {
         varTrack = GameObject.Find("KeptVariables").GetComponent<variableTracker>();
         //characterController = GameObject.Find("Player 1").GetComponent<CharacterController2D>();
         wins1.enabled = false;
@@ -26,32 +24,31 @@ public class P2CharacterCardController : MonoBehaviour
         rocket.enabled = false;
         shotgun.enabled = false;
         shield.enabled = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (varTrack.P2wins == 1)
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (varTrack.P3wins == 1)
         {
             wins1.enabled = true;
         }
 
-        if (varTrack.P2wins == 2)
+        if (varTrack.P3wins == 2)
         {
             wins1.enabled = true;
             wins2.enabled = true;
         }
 
-        if (varTrack.P2wins == 3)
+        if (varTrack.P3wins == 3)
         {
             wins1.enabled = true;
             wins2.enabled = true;
             wins3.enabled = true;
         }
 
-        if (varTrack.P1wins == 0)
+        if (varTrack.P3wins == 0)
         {
-            if (wins1.enabled == true)
+            if(wins1.enabled == true)
             {
                 wins1.enabled = false;
             }

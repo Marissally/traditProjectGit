@@ -28,18 +28,21 @@ public class CharacterCardController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (varTrack.P1wins == 1 && wins1.enabled == false)
+		if (varTrack.P1wins == 1)
         {
             wins1.enabled = true;
         }
 
-        if (varTrack.P1wins == 2 && wins2.enabled == false)
+        if (varTrack.P1wins == 2)
         {
+            wins1.enabled = true;
             wins2.enabled = true;
         }
 
-        if (varTrack.P1wins == 3 && wins3.enabled == false)
+        if (varTrack.P1wins == 3)
         {
+            wins1.enabled = true;
+            wins2.enabled = true;
             wins3.enabled = true;
         }
 

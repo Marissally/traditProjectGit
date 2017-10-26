@@ -11,6 +11,8 @@ public class variableTracker : MonoBehaviour {
     public string winText;
     public int P1wins;
     public int P2wins;
+    public int P3wins;
+    public int P4wins;
     public bool pointsDelivered;
 
     // Use this for initialization
@@ -56,7 +58,7 @@ public class variableTracker : MonoBehaviour {
                 winText = "Player 3 Wins!! Press Start to continue";
                 if (!pointsDelivered)
                 {
-                    P1wins += 1;
+                    P3wins += 1;
                     pointsDelivered = true;
                 }
                 LevelEnd();
@@ -66,7 +68,7 @@ public class variableTracker : MonoBehaviour {
                 winText = "Player 4 Wins!! Press Start to continue";
                 if (!pointsDelivered)
                 {
-                    P2wins += 1;
+                    P4wins += 1;
                     pointsDelivered = true;
                 }
                 LevelEnd();
@@ -80,11 +82,13 @@ public class variableTracker : MonoBehaviour {
         //use button 9 for mac
         if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick2Button7))
         {
-            if (P1wins == 3 || P2wins == 3)
+            if (P1wins == 3 || P2wins == 3 || P3wins == 3 || P4wins == 3)
             {
                 pointsDelivered = false;
                 P1wins = 0;
                 P2wins = 0;
+                P3wins = 0;
+                P4wins = 0;
                 SceneManager.LoadScene(0);
             }
 

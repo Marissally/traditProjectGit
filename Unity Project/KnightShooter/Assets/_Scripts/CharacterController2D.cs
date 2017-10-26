@@ -30,6 +30,10 @@ public class CharacterController2D : MonoBehaviour {
     public string _horizontalControl;
     public string _verticalControl;
     public string walking;
+    public SpriteRenderer pistol;
+    public SpriteRenderer bazooka;
+    public SpriteRenderer shotgun;
+    public SpriteRenderer shieldImage;
 
 
 
@@ -38,6 +42,8 @@ public class CharacterController2D : MonoBehaviour {
         _rb = GetComponent<Rigidbody2D>();
 		_anim = this.GetComponentInChildren<Animator> ();
 		_anim.SetBool (walking, false);
+        bazooka.enabled = false;
+        shotgun.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -45,18 +51,34 @@ public class CharacterController2D : MonoBehaviour {
         _horizontalVelocity = Input.GetAxis(_horizontalControl);
         _verticalAim = Input.GetAxis(_verticalControl);
 
+        if (shield == true)
+        {
+            shieldImage.enabled = true;
+        }
+
+        if (shield == false)
+        {
+            shieldImage.enabled = false;
+        }
+
 		if (_left) {
 			this.GetComponentInChildren<SpriteRenderer> ().flipX = false;
+            pistol.flipX = true;
+            bazooka.flipX = true;
+            shotgun.flipX = true;
+            shieldImage.flipX = true;
 		}
 		if (_right) {
 			this.GetComponentInChildren<SpriteRenderer> ().flipX = true;
+            pistol.flipX = false;
+            bazooka.flipX = false;
+            shotgun.flipX = false;
+            shieldImage.flipX = false;
 		}
         if (!_grounded)
         {
             _horizontalVelocity *= _airControl;
         }
-			
-			
 
 		//use button 0 for pc
 		//use button 16 for mac
@@ -96,6 +118,9 @@ public class CharacterController2D : MonoBehaviour {
 			if (shotType == "Default" || ammo == 0) 
 			{
                 shotType = "Default";
+                shotgun.enabled = false;
+                bazooka.enabled = false;
+                pistol.enabled = true;
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
                 bullet.GetComponent<BulletController>().spawnOrigin = this;
                 if (_verticalAim == 1)
@@ -207,6 +232,8 @@ public class CharacterController2D : MonoBehaviour {
                 Destroy(collision.gameObject);
                 shotType = "Shotgun";
                 ammo = 12;
+                pistol.enabled = false;
+                shotgun.enabled = true;
                 shield = false;
             }
 
@@ -215,6 +242,8 @@ public class CharacterController2D : MonoBehaviour {
                 Destroy(collision.gameObject);
                 shotType = "Rocket";
                 ammo = 2;
+                pistol.enabled = false;
+                bazooka.enabled = true;
                 shield = false;
             }
 
