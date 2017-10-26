@@ -80,7 +80,7 @@ public class variableTracker : MonoBehaviour {
     {
         //use button 7 for pc
         //use button 9 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick2Button7))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.Joystick2Button9))
         {
             if (P1wins == 3 || P2wins == 3 || P3wins == 3 || P4wins == 3)
             {
@@ -95,7 +95,7 @@ public class variableTracker : MonoBehaviour {
             else
             {
                 pointsDelivered = false;
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(3);
             }
         }
     }

@@ -41,10 +41,6 @@ public class RocketController : MonoBehaviour {
 				{
 					Destroy (o.gameObject);	
 				}
-                else
-                {
-                    return;
-                }
 			}
         }
     }
