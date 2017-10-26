@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour {
 
+    public CharacterController2D spawnOrigin;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,22 +17,21 @@ public class BulletController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player 1")
+        if (collision.gameObject.tag == "Player")
         {
-            return;
-        }
-        if (collision.gameObject.name == "Player 2")
-        {
-            P2CharacterConroller2D player2 = collision.gameObject.GetComponent<P2CharacterConroller2D>();
-            if (player2.shield == true)
+            CharacterController2D player = collision.gameObject.GetComponent<CharacterController2D>();
+            if (player != spawnOrigin)
             {
-                player2.shield = false;
+                if (player.shield == true)
+                {
+                    player.shield = false;
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                }
+                Destroy(gameObject);
             }
-            else
-            {
-                Destroy(collision.gameObject);
-            }
-            Destroy(gameObject);
         }
         if (collision.gameObject.tag == "DamagablePlat")
         {

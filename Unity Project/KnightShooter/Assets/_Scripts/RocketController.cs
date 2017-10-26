@@ -5,6 +5,8 @@ using UnityEngine;
 public class RocketController : MonoBehaviour {
 
 	Collider2D[] explodeRadius;
+    public CharacterController2D spawnOrigin;
+
 	// Use this for initialization
 	void Start () {
 		explodeRadius = new Collider2D[20];
@@ -20,10 +22,16 @@ public class RocketController : MonoBehaviour {
         
 		if ((collision.gameObject.tag == "Player") || (collision.gameObject.tag == "DestructiblePlat") || (collision.gameObject.tag == "IndestructiblePlat") || (collision.gameObject.tag == "DamagablePlat"))
         {
-			if (collision.gameObject.name == "Player 1") {
-				return;
-			} 
-			else {
+			if (collision.gameObject.tag == "Player")
+            {
+                CharacterController2D player = collision.gameObject.GetComponent<CharacterController2D>();
+                if (player == spawnOrigin)
+                {
+                    return;
+                }
+            } 
+			else
+            {
 				Destroy (gameObject);
 			}
 			Physics2D.OverlapCircle(transform.position, 1.5f, new ContactFilter2D(), explodeRadius);
@@ -33,6 +41,10 @@ public class RocketController : MonoBehaviour {
 				{
 					Destroy (o.gameObject);	
 				}
+                else
+                {
+                    return;
+                }
 			}
         }
     }

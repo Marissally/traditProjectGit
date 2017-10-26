@@ -12,7 +12,7 @@ public class P2CharacterCardController : MonoBehaviour {
     public Image shotgun;
     public Image shield;
     private variableTracker varTrack;
-    public P2CharacterConroller2D characterController;
+    public CharacterController2D characterController;
 
 	// Use this for initialization
 	void Start () {

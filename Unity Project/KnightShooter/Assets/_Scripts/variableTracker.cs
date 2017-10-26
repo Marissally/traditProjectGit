@@ -80,8 +80,19 @@ public class variableTracker : MonoBehaviour {
         //use button 9 for mac
         if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick2Button7))
         {
-            pointsDelivered = false;
-            SceneManager.LoadScene(2);
+            if (P1wins == 3 || P2wins == 3)
+            {
+                pointsDelivered = false;
+                P1wins = 0;
+                P2wins = 0;
+                SceneManager.LoadScene(0);
+            }
+
+            else
+            {
+                pointsDelivered = false;
+                SceneManager.LoadScene(2);
+            }
         }
     }
 }
