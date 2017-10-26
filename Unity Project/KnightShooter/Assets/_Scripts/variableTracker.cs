@@ -4,31 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour {
+public class variableTracker : MonoBehaviour {
 
     public List<GameObject> players;
     public List<Text> textList;
     public string winText;
-    private int P1wins;
-    private int P2wins;
+    public int P1wins;
+    public int P2wins;
     public bool pointsDelivered;
 
     // Use this for initialization
     void Start () {
-        GameObject canvas = GameObject.Find("Canvas");
-        DontDestroyOnLoad(canvas);
-        textList = new List<Text>(canvas.GetComponentsInChildren<Text>());
+        GameObject keptVariables = GameObject.Find("KeptVariables");
+        DontDestroyOnLoad(keptVariables);
         players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         pointsDelivered = false;
-        textList[2].enabled = false;
-    }
-	
-	// Update is called once per frame
-    void OnGUI ()
-    {
-        textList[0].text = P1wins.ToString();
-        textList[1].text = P2wins.ToString();
-        textList[2].text = winText;
     }
 
     // Update is called once per frame
@@ -37,7 +27,6 @@ public class GameController : MonoBehaviour {
         if (players.Count == 0)
         {
             winText = "Draw!! Press Start to continue";
-            textList[2].enabled = true;
             LevelEnd();
         }
         if (players.Count == 1)
@@ -45,7 +34,6 @@ public class GameController : MonoBehaviour {
             if (players[0].name == "Player 1")
             {
                 winText = "Player 1 Wins!! Press Start to continue";
-                textList[2].enabled = true;
                 if (!pointsDelivered)
                 {
                     P1wins += 1;
@@ -56,7 +44,6 @@ public class GameController : MonoBehaviour {
             if (players[0].name == "Player 2")
             {
                 winText = "Player 2 Wins!! Press Start to continue";
-                textList[2].enabled = true;
                 if (!pointsDelivered)
                 {
                     P2wins += 1;
@@ -67,7 +54,6 @@ public class GameController : MonoBehaviour {
             if (players[0].name == "Player 3")
             {
                 winText = "Player 3 Wins!! Press Start to continue";
-                textList[2].enabled = true;
                 if (!pointsDelivered)
                 {
                     P1wins += 1;
@@ -78,7 +64,6 @@ public class GameController : MonoBehaviour {
             if (players[0].name == "Player 4")
             {
                 winText = "Player 4 Wins!! Press Start to continue";
-                textList[2].enabled = true;
                 if (!pointsDelivered)
                 {
                     P2wins += 1;
@@ -95,8 +80,8 @@ public class GameController : MonoBehaviour {
         //use button 9 for mac
         if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick2Button7))
         {
-            SceneManager.LoadScene(0);
-            textList[2].enabled = false;
+            pointsDelivered = false;
+            SceneManager.LoadScene(2);
         }
     }
 }
