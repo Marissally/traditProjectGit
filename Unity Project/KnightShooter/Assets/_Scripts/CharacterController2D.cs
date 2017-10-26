@@ -181,6 +181,7 @@ public class CharacterController2D : MonoBehaviour {
                 Destroy(collision.gameObject);
                 shotType = "Shotgun";
                 ammo = 12;
+                shield = false;
             }
 
             if (collision.gameObject.name == "rocketPower(Clone)")
@@ -188,6 +189,7 @@ public class CharacterController2D : MonoBehaviour {
                 Destroy(collision.gameObject);
                 shotType = "Rocket";
                 ammo = 2;
+                shield = false;
             }
 
             if (collision.gameObject.name == "shieldPower(Clone)")

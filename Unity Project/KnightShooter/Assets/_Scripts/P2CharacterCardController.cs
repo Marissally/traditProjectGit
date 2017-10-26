@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterCardController : MonoBehaviour {
+public class P2CharacterCardController : MonoBehaviour {
 
     public Image wins1;
     public Image wins2;
@@ -12,7 +12,7 @@ public class CharacterCardController : MonoBehaviour {
     public Image shotgun;
     public Image shield;
     private variableTracker varTrack;
-    public CharacterController2D characterController;
+    public P2CharacterConroller2D characterController;
 
 	// Use this for initialization
 	void Start () {
@@ -28,22 +28,22 @@ public class CharacterCardController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (varTrack.P1wins == 1 && wins1.enabled == false)
+		if (varTrack.P2wins == 1 && wins1.enabled == false)
         {
             wins1.enabled = true;
         }
 
-        if (varTrack.P1wins == 2 && wins2.enabled == false)
+        if (varTrack.P2wins == 2 && wins2.enabled == false)
         {
             wins2.enabled = true;
         }
 
-        if (varTrack.P1wins == 3 && wins3.enabled == false)
+        if (varTrack.P2wins == 3 && wins3.enabled == false)
         {
             wins3.enabled = true;
         }
 
-        if (varTrack.P1wins == 0)
+        if (varTrack.P2wins == 0)
         {
             if(wins1.enabled == true)
             {
