@@ -49,7 +49,7 @@ public class P2CharacterCardController : MonoBehaviour
             wins3.enabled = true;
         }
 
-        if (varTrack.P1wins == 0)
+        if (varTrack.P2wins == 0)
         {
             if (wins1.enabled == true)
             {
