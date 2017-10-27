@@ -90,6 +90,7 @@ public class variableTracker : MonoBehaviour {
                 P3wins = 0;
                 P4wins = 0;
                 SceneManager.LoadScene(0);
+                print("Loaded");
             }
 
             else

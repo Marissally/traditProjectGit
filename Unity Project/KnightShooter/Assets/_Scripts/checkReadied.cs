@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class checkReadied : MonoBehaviour {
 
@@ -8,7 +9,6 @@ public class checkReadied : MonoBehaviour {
     public CharMenuController P2View;
     public CharMenuController P3View;
     public CharMenuController P4View;
-    private LoadScene SceneLoader;
 
     // Use this for initialization
     void Start () {
@@ -22,7 +22,7 @@ public class checkReadied : MonoBehaviour {
         {
             //load random level scene
             //int p = UnityEngine.Random.Range(2, 4);
-            SceneLoader.LoadByIndex(2);
+            SceneManager.LoadScene(3);
         }
     }
 }
