@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class variableTracker : MonoBehaviour {
-
+public class variableTracker : MonoBehaviour
+{
     public List<GameObject> players;
+    public List<GameObject> cards;
     public List<Text> textList;
     public string winText;
     public int P1wins;
@@ -14,64 +15,101 @@ public class variableTracker : MonoBehaviour {
     public int P3wins;
     public int P4wins;
     public bool pointsDelivered;
+    public bool P1enabled;
+    public bool P2enabled;
+    public bool P3enabled;
+    public bool P4enabled;
 
     // Use this for initialization
-    void Start () {
-        GameObject keptVariables = GameObject.Find("KeptVariables");
-        DontDestroyOnLoad(keptVariables);
-        players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+    void Start ()
+    {
+        P1enabled = false;
+        P2enabled = false;
+        P3enabled = false;
+        P4enabled = false;
+        DontDestroyOnLoad(this);
         pointsDelivered = false;
     }
 
     // Update is called once per frame
-    void Update () {
-        players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
-        if (players.Count == 0)
+    void Update ()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
-            winText = "Draw!! Press Start to continue";
-            LevelEnd();
-        }
-        if (players.Count == 1)
-        {
-            if (players[0].name == "Player 1")
+            players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+            cards = new List<GameObject>(GameObject.FindGameObjectsWithTag("Card"));
+            pointsDelivered = false;
+
+            if ((P1enabled == true))
             {
-                winText = "Player 1 Wins!! Press Start to continue";
-                if (!pointsDelivered)
-                {
-                    P1wins += 1;
-                    pointsDelivered = true;
-                }
+                print("Enabled");
+                players[0].SetActive(true);
+                cards[0].SetActive(true);
+            }
+
+            if (P2enabled && players[1].activeSelf == false)
+            {
+                players[1].SetActive(true);
+            }
+
+            if (P3enabled && players[2].activeSelf == false)
+            {
+                players[2].SetActive(true);
+            }
+
+            if (P4enabled && players[3].activeSelf == false)
+            {
+                players[3].SetActive(true);
+            }
+
+            if (players.Count == 0)
+            {
+                winText = "Draw!! Press Start to continue";
                 LevelEnd();
             }
-            if (players[0].name == "Player 2")
+
+            if (players.Count == 1)
             {
-                winText = "Player 2 Wins!! Press Start to continue";
-                if (!pointsDelivered)
+                if (players[0].name == "Player 1")
                 {
-                    P2wins += 1;
-                    pointsDelivered = true;
+                    winText = "Player 1 Wins!! Press Start to continue";
+                    if (!pointsDelivered)
+                    {
+                        P1wins += 1;
+                        pointsDelivered = true;
+                    }
+                    LevelEnd();
                 }
-                LevelEnd();
-            }
-            if (players[0].name == "Player 3")
-            {
-                winText = "Player 3 Wins!! Press Start to continue";
-                if (!pointsDelivered)
+                if (players[0].name == "Player 2")
                 {
-                    P3wins += 1;
-                    pointsDelivered = true;
+                    winText = "Player 2 Wins!! Press Start to continue";
+                    if (!pointsDelivered)
+                    {
+                        P2wins += 1;
+                        pointsDelivered = true;
+                    }
+                    LevelEnd();
                 }
-                LevelEnd();
-            }
-            if (players[0].name == "Player 4")
-            {
-                winText = "Player 4 Wins!! Press Start to continue";
-                if (!pointsDelivered)
+                if (players[0].name == "Player 3")
                 {
-                    P4wins += 1;
-                    pointsDelivered = true;
+                    winText = "Player 3 Wins!! Press Start to continue";
+                    if (!pointsDelivered)
+                    {
+                        P3wins += 1;
+                        pointsDelivered = true;
+                    }
+                    LevelEnd();
                 }
-                LevelEnd();
+                if (players[0].name == "Player 4")
+                {
+                    winText = "Player 4 Wins!! Press Start to continue";
+                    if (!pointsDelivered)
+                    {
+                        P4wins += 1;
+                        pointsDelivered = true;
+                    }
+                    LevelEnd();
+                }
             }
         }
 	}
@@ -80,7 +118,7 @@ public class variableTracker : MonoBehaviour {
     {
         //use button 7 for pc
         //use button 9 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.Joystick2Button9))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick2Button9))
         {
             if (P1wins == 3 || P2wins == 3 || P3wins == 3 || P4wins == 3)
             {
