@@ -11,10 +11,12 @@ public class checkReadied : MonoBehaviour {
     public CharMenuController P3View;
     public CharMenuController P4View;
     public Image startNotifier;
+	private variableTracker vt;
 
     // Use this for initialization
     void Start () {
         startNotifier.enabled = false;
+		vt = GameObject.Find("variableTracker").GetComponent<variableTracker>();
 	}
 	
 	// Update is called once per frame
@@ -29,10 +31,11 @@ public class checkReadied : MonoBehaviour {
         {
             startNotifier.enabled = false;
         }
-        if (Input.GetKeyDown(KeyCode.JoystickButton7) && startNotifier.enabled)
+        if (Input.GetKeyDown(KeyCode.JoystickButton9) && startNotifier.enabled)
         {
             //load random level scene
             //int p = UnityEngine.Random.Range(2, 4);
+			vt.P1enabled = true;
             SceneManager.LoadScene(3);
         }
     }

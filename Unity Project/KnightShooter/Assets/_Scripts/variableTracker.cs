@@ -40,33 +40,30 @@ public class variableTracker : MonoBehaviour
             cards = new List<GameObject>(GameObject.FindGameObjectsWithTag("Card"));
             pointsDelivered = false;
 
-            if ((P1enabled == true))
+            if (P1enabled)
             {
                 print("Enabled");
                 players[0].SetActive(true);
                 cards[0].SetActive(true);
             }
+			for (int i = 0; i < players.Count; i++) {
+				if (!P2enabled && players [i].name == "Player 2") {
+					Destroy (players [i]);
+				}
 
-            if (P2enabled && players[1].activeSelf == false)
-            {
-                players[1].SetActive(true);
-            }
+				if (!P3enabled && players [i].name == "Player 3") {
+					Destroy (players [i]);
+				}
 
-            if (P3enabled && players[2].activeSelf == false)
-            {
-                players[2].SetActive(true);
-            }
+				if (!P4enabled && players [i].name == "Player 4") {
+					Destroy (players [i]);
+				}
+			}
 
-            if (P4enabled && players[3].activeSelf == false)
-            {
-                players[3].SetActive(true);
-            }
-
-            if (players.Count == 0)
-            {
-                winText = "Draw!! Press Start to continue";
-                LevelEnd();
-            }
+			if (players.Count == 0) {
+				winText = "Draw!! Press Start to continue";
+				LevelEnd ();
+			}
 
             if (players.Count == 1)
             {

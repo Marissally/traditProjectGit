@@ -13,7 +13,7 @@ public class PlayerTracker : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        varTrack = GameObject.Find("variableTracker").GetComponent<variableTracker>();
+		varTrack = GameObject.FindObjectOfType<variableTracker> ();
 	}
 	
 	// Update is called once per frame
