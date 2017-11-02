@@ -16,7 +16,7 @@ public class checkReadied : MonoBehaviour {
     // Use this for initialization
     void Start () {
         startNotifier.enabled = false;
-		vt = GameObject.Find("variableTracker").GetComponent<variableTracker>();
+		vt = GameObject.FindObjectOfType<variableTracker> ();
 	}
 	
 	// Update is called once per frame

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class P2CharacterCardController : MonoBehaviour
 {
-
     public Image wins1;
     public Image wins2;
     public Image wins3;
