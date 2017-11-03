@@ -24,9 +24,11 @@ public class CharacterController2D : MonoBehaviour {
     public float _shotSpeed = 800f;
     public float _horizontalVelocity;
     public float _verticalAim;
+    public bool _crouched;
 	public string shotType = "Default";
     public KeyCode jumpButton;
     public KeyCode shootButton;
+    public KeyCode crouchButton;
     public string _horizontalControl;
     public string _verticalControl;
     public string walking;
@@ -34,6 +36,7 @@ public class CharacterController2D : MonoBehaviour {
     public SpriteRenderer bazooka;
     public SpriteRenderer shotgun;
     public SpriteRenderer shieldImage;
+    public string aimType;
 
 
 
@@ -44,30 +47,35 @@ public class CharacterController2D : MonoBehaviour {
 		_anim.SetBool (walking, false);
         bazooka.enabled = false;
         shotgun.enabled = false;
+        _crouched = false;
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
             if (this.name == "Player 1")
             {
                 jumpButton = KeyCode.Joystick1Button0;
                 shootButton = KeyCode.Joystick1Button2;
+                crouchButton = KeyCode.Joystick1Button5;
             }
 
             if (this.name == "Player 2")
             {
                 jumpButton = KeyCode.Joystick2Button0;
                 shootButton = KeyCode.Joystick2Button2;
+                crouchButton = KeyCode.Joystick2Button5;
             }
 
             if (this.name == "Player 3")
             {
                 jumpButton = KeyCode.Joystick3Button0;
                 shootButton = KeyCode.Joystick3Button2;
+                crouchButton = KeyCode.Joystick3Button5;
             }
 
             if (this.name == "Player 4")
             {
                 jumpButton = KeyCode.Joystick4Button0;
                 shootButton = KeyCode.Joystick4Button2;
+                crouchButton = KeyCode.Joystick4Button5;
             }
         }
 
@@ -77,24 +85,28 @@ public class CharacterController2D : MonoBehaviour {
             {
                 jumpButton = KeyCode.Joystick1Button16;
                 shootButton = KeyCode.Joystick1Button18;
+                crouchButton = KeyCode.Joystick1Button14;
             }
 
             if (this.name == "Player 2")
             {
                 jumpButton = KeyCode.Joystick2Button16;
                 shootButton = KeyCode.Joystick2Button18;
+                crouchButton = KeyCode.Joystick2Button14;
             }
 
             if (this.name == "Player 3")
             {
                 jumpButton = KeyCode.Joystick3Button16;
                 shootButton = KeyCode.Joystick3Button18;
+                crouchButton = KeyCode.Joystick3Button14;
             }
 
             if (this.name == "Player 4")
             {
                 jumpButton = KeyCode.Joystick4Button16;
                 shootButton = KeyCode.Joystick4Button18;
+                crouchButton = KeyCode.Joystick4Button14;
             }
         }
     }
@@ -137,35 +149,67 @@ public class CharacterController2D : MonoBehaviour {
 		//use button 16 for mac
         if(Input.GetKeyDown(jumpButton) && _grounded)
         {
-            _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, _jumpForce));
-            _grounded = false;
+            if(!_crouched)
+            {
+                _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, _jumpForce));
+                _grounded = false;
+            }
+
+            else
+            {
+                return;
+            }
         }
 
-        if(Mathf.Abs(_rb.velocity.x) < _maxSpeed)
+        if(Input.GetKeyDown(crouchButton))
         {
-            _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, 0f));
-            if(_horizontalVelocity < 0)
+            _crouched = true;
+            //aimType = "360";
+        }
+
+        if(Input.GetKeyUp(crouchButton))
+        {
+            _crouched = false;
+            //aimType = "8Way";
+            //aimType = "4Way";
+        }
+
+        if (Mathf.Abs(_rb.velocity.x) < _maxSpeed)
+        {
+            if(!_crouched)
+            {
+                _rb.AddForce(new Vector2(_horizontalVelocity * _acceleration, 0f));
+            }
+
+            if (_horizontalVelocity < 0)
             {
                 _right = false;
                 _left = true;
-				_anim.SetBool (walking, true);
+                if (!_crouched)
+                {
+                    _anim.SetBool(walking, true);
+                }
 
             }
-            if(_horizontalVelocity > 0)
+            if (_horizontalVelocity > 0)
             {
                 _right = true;
                 _left = false;
-				_anim.SetBool (walking, true);
+                if (!_crouched)
+                {
+                    _anim.SetBool(walking, true);
+                }
 
             }
-			if (_horizontalVelocity == 0) {
-				_anim.SetBool (walking, false);
-			}
+            if (_horizontalVelocity == 0)
+            {
+                _anim.SetBool(walking, false);
+            }
 
         }
 
-		//use button 2 for pc
-		//use button 18 for mac
+        //use button 2 for pc
+        //use button 18 for mac
         if (Input.GetKeyDown(shootButton))
         {
 			if (shotType == "Default" || ammo == 0) 
@@ -176,21 +220,35 @@ public class CharacterController2D : MonoBehaviour {
                 pistol.enabled = true;
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
                 bullet.GetComponent<BulletController>().spawnOrigin = this;
-                if (_verticalAim == 1)
+                if (aimType == "8Way")
                 {
-                    bullet.AddForce(new Vector2(0f, _shotSpeed));
+                    if (_verticalAim == 1)
+                    {
+                        bullet.AddForce(new Vector2(0f, _shotSpeed));
+                    }
+                    else if (_verticalAim == -1)
+                    {
+                        bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                    }
+                    else if (_right)
+                    {
+                        bullet.AddForce(new Vector2(_shotSpeed, _shotSpeed * _verticalAim));
+                    }
+                    else if (_left)
+                    {
+                        bullet.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * _verticalAim));
+                    }
                 }
-                else if (_verticalAim == -1)
+                if (aimType == "4Way")
                 {
-                    bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                    //Code
                 }
-				else if (_right) {
-					bullet.AddForce (new Vector2 (_shotSpeed, _shotSpeed * _verticalAim));
-				}
-				else if (_left) {
-					bullet.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim));
-				}
-			}
+
+                if (aimType == "360")
+                {
+                    //Code
+                }
+            }
 
 			if (shotType == "Shotgun" && ammo != 0) 
 			{
@@ -200,44 +258,59 @@ public class CharacterController2D : MonoBehaviour {
                 bullet.GetComponent<BulletController>().spawnOrigin = this;
                 bullet2.GetComponent<BulletController>().spawnOrigin = this;
                 bullet3.GetComponent<BulletController>().spawnOrigin = this;
-                if (_verticalAim == 1)
+                if(aimType == "8Way")
                 {
-                    bullet.AddForce(new Vector2(0f, _shotSpeed));
-					bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed));
-					bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed));
+                    if (_verticalAim == 1)
+                    {
+                        bullet.AddForce(new Vector2(0f, _shotSpeed));
+                        bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed));
+                        bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed));
+                    }
+                    else if (_verticalAim == -1)
+                    {
+                        bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                        bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed * -1));
+                        bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * -1));
+                    }
+                    else if (_right)
+                    {
+                        bullet.AddForce(new Vector2(_shotSpeed, _shotSpeed * _verticalAim));
+                        if (_verticalAim != 0)
+                        {
+                            bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed * (_verticalAim * 2)));
+                            bullet3.AddForce(new Vector2(_shotSpeed, _shotSpeed * (_verticalAim * -2)));
+                        }
+                        else
+                        {
+                            bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed / 2));
+                            bullet3.AddForce(new Vector2(_shotSpeed, _shotSpeed / -2));
+                        }
+                    }
+                    else if (_left)
+                    {
+                        bullet.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * _verticalAim));
+                        if (_verticalAim != 0)
+                        {
+                            bullet2.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * (_verticalAim * 2)));
+                            bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * (_verticalAim * 2)));
+                        }
+                        else
+                        {
+                            bullet2.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed / 2));
+                            bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed / -2));
+                        }
+                    }
                 }
-                else if (_verticalAim == -1)
+
+                if (aimType == "4Way")
                 {
-                    bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
-					bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed * -1));
-					bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * -1));
+                    //Code
                 }
-                else if (_right) {
-					bullet.AddForce (new Vector2 (_shotSpeed, _shotSpeed * _verticalAim));
-                    if (_verticalAim != 0)
-                    {
-                        bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed * (_verticalAim * 2)));
-                        bullet3.AddForce(new Vector2(_shotSpeed, _shotSpeed * (_verticalAim * -2)));
-                    }
-                    else
-                    {
-                        bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed / 2));
-                        bullet3.AddForce(new Vector2(_shotSpeed, _shotSpeed / -2));
-                    }
-				}
-				else if (_left) {
-					bullet.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim));
-                    if (_verticalAim != 0)
-                    {
-                        bullet2.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * (_verticalAim * 2)));
-                        bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * (_verticalAim * 2)));
-                    }
-                    else
-                    {
-                        bullet2.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed / 2));
-                        bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed / -2));
-                    }
-				}
+
+                if (aimType == "360")
+                {
+                    //Code
+                }
                 ammo--;
 			}
 
@@ -245,20 +318,35 @@ public class CharacterController2D : MonoBehaviour {
 			{
 				Rigidbody2D bullet = Instantiate (_rocket, transform.position, transform.rotation) as Rigidbody2D;
                 bullet.GetComponent<RocketController>().spawnOrigin = this;
-                if (_verticalAim == 1)
+                if (aimType == "8Way")
                 {
-                    bullet.AddForce(new Vector2(0f, _shotSpeed));
+                    if (_verticalAim == 1)
+                    {
+                        bullet.AddForce(new Vector2(0f, _shotSpeed));
+                    }
+                    else if (_verticalAim == -1)
+                    {
+                        bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                    }
+                    else if (_right)
+                    {
+                        bullet.AddForce(new Vector2(_shotSpeed, _shotSpeed * _verticalAim));
+                    }
+                    else if (_left)
+                    {
+                        bullet.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * _verticalAim));
+                    }
                 }
-                else if (_verticalAim == -1)
+
+                if (aimType == "4Way")
                 {
-                    bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                    //Code
                 }
-                else if (_right) {
-					bullet.AddForce (new Vector2 (_shotSpeed, _shotSpeed * _verticalAim));
-				}
-				else if (_left) {
-					bullet.AddForce (new Vector2 (_shotSpeed * -1, _shotSpeed * _verticalAim));
-				}
+
+                if (aimType == "360")
+                {
+                    //Code
+                }
                 ammo--;
 			}
         }

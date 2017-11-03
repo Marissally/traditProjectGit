@@ -38,7 +38,6 @@ public class variableTracker : MonoBehaviour
         {
             players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
             cards = new List<GameObject>(GameObject.FindGameObjectsWithTag("Card"));
-            pointsDelivered = false;
 
             if (P1enabled)
             {
