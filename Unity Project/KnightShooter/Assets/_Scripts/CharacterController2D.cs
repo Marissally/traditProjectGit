@@ -116,6 +116,79 @@ public class CharacterController2D : MonoBehaviour {
         _horizontalVelocity = Input.GetAxis(_horizontalControl);
         _verticalAim = Input.GetAxis(_verticalControl);
 
+        if (aimType == "4Way")
+        {
+            if (_right)
+            {
+                if (_verticalAim == 1)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, 90);
+                }
+
+                if (_verticalAim == -1)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, -90);
+                }
+            }
+
+            if (_left)
+            {
+                if (_verticalAim == 1)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, -90);
+                }
+
+                if (_verticalAim == -1)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, 90);
+                }
+            }
+
+            if (_verticalAim == 0)
+            {
+                pistol.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
+
+        if (aimType == "8Way")
+        {
+            if (_right)
+            {
+                if (_verticalAim == 1)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, 90);
+                }
+
+                if (_verticalAim == -1)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, -90);
+                }
+            }
+
+            if (_left)
+            {
+                if (_verticalAim == 1)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, -90);
+                }
+
+                if (_verticalAim == -1)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, 90);
+                }
+            }
+
+            if (_verticalAim == 0)
+            {
+                pistol.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
+
+        if (aimType == "360")
+        {
+            pistol.transform.rotation = Quaternion.Euler(0,0, Mathf.Atan((_horizontalVelocity / _verticalAim)) * Mathf.Rad2Deg);
+        }
+
         if (shield == true)
         {
             shieldImage.enabled = true;
@@ -164,14 +237,14 @@ public class CharacterController2D : MonoBehaviour {
         if(Input.GetKeyDown(crouchButton))
         {
             _crouched = true;
-            //aimType = "360";
+            aimType = "360";
         }
 
         if(Input.GetKeyUp(crouchButton))
         {
             _crouched = false;
             //aimType = "8Way";
-            //aimType = "4Way";
+            aimType = "4Way";
         }
 
         if (Mathf.Abs(_rb.velocity.x) < _maxSpeed)

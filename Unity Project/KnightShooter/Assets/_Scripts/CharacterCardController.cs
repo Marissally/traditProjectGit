@@ -28,39 +28,159 @@ public class CharacterCardController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (varTrack.P1wins == 1)
+        if (this.name == "CharacterCard1")
         {
-            wins1.enabled = true;
-        }
-
-        if (varTrack.P1wins == 2)
-        {
-            wins1.enabled = true;
-            wins2.enabled = true;
-        }
-
-        if (varTrack.P1wins == 3)
-        {
-            wins1.enabled = true;
-            wins2.enabled = true;
-            wins3.enabled = true;
-        }
-
-        if (varTrack.P1wins == 0)
-        {
-            if(wins1.enabled == true)
+            if (varTrack.P1wins == 1)
             {
-                wins1.enabled = false;
+                wins1.enabled = true;
             }
 
-            if (wins2.enabled == true)
+            if (varTrack.P1wins == 2)
             {
-                wins2.enabled = false;
+                wins1.enabled = true;
+                wins2.enabled = true;
             }
 
-            if (wins3.enabled == true)
+            if (varTrack.P1wins == 3)
             {
-                wins3.enabled = false;
+                wins1.enabled = true;
+                wins2.enabled = true;
+                wins3.enabled = true;
+            }
+
+            if (varTrack.P1wins == 0)
+            {
+                if (wins1.enabled == true)
+                {
+                    wins1.enabled = false;
+                }
+
+                if (wins2.enabled == true)
+                {
+                    wins2.enabled = false;
+                }
+
+                if (wins3.enabled == true)
+                {
+                    wins3.enabled = false;
+                }
+            }
+        }
+
+        if (this.name == "CharacterCard2")
+        {
+            if (varTrack.P2wins == 1)
+            {
+                wins1.enabled = true;
+            }
+
+            if (varTrack.P2wins == 2)
+            {
+                wins1.enabled = true;
+                wins2.enabled = true;
+            }
+
+            if (varTrack.P2wins == 3)
+            {
+                wins1.enabled = true;
+                wins2.enabled = true;
+                wins3.enabled = true;
+            }
+
+            if (varTrack.P2wins == 0)
+            {
+                if (wins1.enabled == true)
+                {
+                    wins1.enabled = false;
+                }
+
+                if (wins2.enabled == true)
+                {
+                    wins2.enabled = false;
+                }
+
+                if (wins3.enabled == true)
+                {
+                    wins3.enabled = false;
+                }
+            }
+        }
+
+        if (this.name == "CharacterCard3")
+        {
+            if (varTrack.P3wins == 1)
+            {
+                wins1.enabled = true;
+            }
+
+            if (varTrack.P3wins == 2)
+            {
+                wins1.enabled = true;
+                wins2.enabled = true;
+            }
+
+            if (varTrack.P3wins == 3)
+            {
+                wins1.enabled = true;
+                wins2.enabled = true;
+                wins3.enabled = true;
+            }
+
+            if (varTrack.P3wins == 0)
+            {
+                if (wins1.enabled == true)
+                {
+                    wins1.enabled = false;
+                }
+
+                if (wins2.enabled == true)
+                {
+                    wins2.enabled = false;
+                }
+
+                if (wins3.enabled == true)
+                {
+                    wins3.enabled = false;
+                }
+            }
+        }
+
+        if (this.name == "CharacterCard4")
+        {
+            if (varTrack.P4wins == 1)
+            {
+                wins1.enabled = true;
+            }
+
+            if (varTrack.P4wins == 2)
+            {
+                wins1.enabled = true;
+                wins2.enabled = true;
+            }
+
+            if (varTrack.P4wins == 3)
+            {
+                wins1.enabled = true;
+                wins2.enabled = true;
+                wins3.enabled = true;
+            }
+
+            if (varTrack.P4wins == 0)
+            {
+                if (wins1.enabled == true)
+                {
+                    wins1.enabled = false;
+                }
+
+                if (wins2.enabled == true)
+                {
+                    wins2.enabled = false;
+                }
+
+                if (wins3.enabled == true)
+                {
+                    wins3.enabled = false;
+                }
             }
         }
 
