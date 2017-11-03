@@ -44,7 +44,60 @@ public class CharacterController2D : MonoBehaviour {
 		_anim.SetBool (walking, false);
         bazooka.enabled = false;
         shotgun.enabled = false;
-	}
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            if (this.name == "Player 1")
+            {
+                jumpButton = KeyCode.Joystick1Button0;
+                shootButton = KeyCode.Joystick1Button2;
+            }
+
+            if (this.name == "Player 2")
+            {
+                jumpButton = KeyCode.Joystick2Button0;
+                shootButton = KeyCode.Joystick2Button2;
+            }
+
+            if (this.name == "Player 3")
+            {
+                jumpButton = KeyCode.Joystick3Button0;
+                shootButton = KeyCode.Joystick3Button2;
+            }
+
+            if (this.name == "Player 4")
+            {
+                jumpButton = KeyCode.Joystick4Button0;
+                shootButton = KeyCode.Joystick4Button2;
+            }
+        }
+
+        if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+        {
+            if (this.name == "Player 1")
+            {
+                jumpButton = KeyCode.Joystick1Button16;
+                shootButton = KeyCode.Joystick1Button18;
+            }
+
+            if (this.name == "Player 2")
+            {
+                jumpButton = KeyCode.Joystick2Button16;
+                shootButton = KeyCode.Joystick2Button18;
+            }
+
+            if (this.name == "Player 3")
+            {
+                jumpButton = KeyCode.Joystick3Button16;
+                shootButton = KeyCode.Joystick3Button18;
+            }
+
+            if (this.name == "Player 4")
+            {
+                jumpButton = KeyCode.Joystick4Button16;
+                shootButton = KeyCode.Joystick4Button18;
+            }
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {

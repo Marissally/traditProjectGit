@@ -13,7 +13,7 @@ public class CanvasController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        varTrack = GameObject.Find("KeptVariables").GetComponent<variableTracker>();
+        varTrack = GameObject.Find("variableTracker").GetComponent<variableTracker>();
         winMessage.enabled = false;
 	}
 

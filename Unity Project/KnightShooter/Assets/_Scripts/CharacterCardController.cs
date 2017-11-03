@@ -16,7 +16,7 @@ public class CharacterCardController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        varTrack = GameObject.Find("KeptVariables").GetComponent<variableTracker>();
+        varTrack = GameObject.Find("variableTracker").GetComponent<variableTracker>();
         //characterController = GameObject.Find("Player 1").GetComponent<CharacterController2D>();
         wins1.enabled = false;
         wins2.enabled = false;
