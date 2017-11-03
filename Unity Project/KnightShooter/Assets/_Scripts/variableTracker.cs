@@ -9,6 +9,7 @@ public class variableTracker : MonoBehaviour
     public List<GameObject> players;
     public List<GameObject> cards;
     public List<Text> textList;
+    private List<GameObject> projectiles;
     public string winText;
     public int P1wins;
     public int P2wins;
@@ -41,7 +42,6 @@ public class variableTracker : MonoBehaviour
 
             if (P1enabled)
             {
-                print("Enabled");
                 players[0].SetActive(true);
                 cards[0].SetActive(true);
             }
@@ -66,6 +66,11 @@ public class variableTracker : MonoBehaviour
 
             if (players.Count == 1)
             {
+                projectiles = new List<GameObject>(GameObject.FindGameObjectsWithTag("Projectile"));
+                for (int i = 0; i < projectiles.Count; i++)
+                {
+                    Destroy(projectiles[i]);
+                }
                 if (players[0].name == "Player 1")
                 {
                     winText = "Player 1 Wins!! Press Start to continue";

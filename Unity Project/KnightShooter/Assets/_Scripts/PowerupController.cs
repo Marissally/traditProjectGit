@@ -12,7 +12,7 @@ public class PowerupController : MonoBehaviour {
     public Rigidbody2D _rocketPower;
     public Rigidbody2D _shieldPower;
     public int currentPower = 0;
-	public int timer = 30;
+    public int timer = 15;
 	public DateTime baseTime;
     public TimeSpan check;
 	public List<Rigidbody2D> powerups = new List<Rigidbody2D>(4);
@@ -36,6 +36,7 @@ public class PowerupController : MonoBehaviour {
             Rigidbody2D powerup = Instantiate(powerups[p], transform.position, transform.rotation) as Rigidbody2D;
             baseTime = DateTime.UtcNow;
 			currentPower = p;
+            timer = 30;
         }
     }
 
