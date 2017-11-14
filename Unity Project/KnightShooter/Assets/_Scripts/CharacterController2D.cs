@@ -115,7 +115,7 @@ public class CharacterController2D : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         _horizontalVelocity = Input.GetAxis(_horizontalControl);
-        _verticalAim = Input.GetAxis(_verticalControl);
+		_verticalAim = Input.GetAxis(_verticalControl);
 
         if (aimType == "4Way")
         {
@@ -186,8 +186,13 @@ public class CharacterController2D : MonoBehaviour {
         }
 
         if (aimType == "360")
-        {
-            pistol.transform.rotation = Quaternion.Euler(0,0, Mathf.Atan((_horizontalVelocity / _verticalAim)) * Mathf.Rad2Deg);
+		{
+			if (_horizontalVelocity > 0) {
+				pistol.transform.rotation = Quaternion.Euler (0, 0, Mathf.Atan2 (_verticalAim, _horizontalVelocity) * Mathf.Rad2Deg);
+			}
+			if (_horizontalVelocity < 0) {
+				pistol.transform.rotation = Quaternion.Euler (0, 0, Mathf.Atan2 (-1 * _verticalAim, -1 * _horizontalVelocity) * Mathf.Rad2Deg);
+			}
         }
 
         if (shield == true)
@@ -362,7 +367,16 @@ public class CharacterController2D : MonoBehaviour {
                 if (aimType == "360")
                 {
                     //Code
-                    bullet.AddForce(new Vector2(_shotSpeed * _horizontalVelocity, _shotSpeed * _verticalAim));
+					if (_horizontalVelocity == 0 && _verticalAim == 0) {
+						if (_right) {
+							bullet.AddForce (new Vector2 (_shotSpeed, 0f));
+						}
+						if (_left) {
+							bullet.AddForce (new Vector2 (_shotSpeed * -1, 0f));
+						}
+					} else {
+						bullet.AddForce (new Vector2 (_shotSpeed * _horizontalVelocity, _shotSpeed * _verticalAim));
+					}
                 }
             }
 
@@ -551,7 +565,7 @@ public class CharacterController2D : MonoBehaviour {
                 else if (aimType == "360")
                 {
                     //Code
-                    bullet.AddForce(new Vector2(_shotSpeed * _horizontalVelocity, _shotSpeed * _verticalAim));
+					bullet.AddForce(new Vector2(_shotSpeed * _horizontalVelocity, _shotSpeed * _verticalAim));
                 }
                 ammo--;
 			}
