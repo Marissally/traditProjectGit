@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 286
-    y: 187
+    x: 519
+    y: 150
     width: 1920
     height: 1037
   m_ShowMode: 4
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 60
+  controlID: 134
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 61
+  controlID: 135
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -356,8 +356,8 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 286
-    y: 236
+    x: 519
+    y: 199
     width: 692
     height: 619
   m_MaximizeOnPlay: 1
@@ -432,19 +432,19 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 982
-    y: 236
+    x: 1215
+    y: 199
     width: 670
     height: 619
   m_SceneLighting: 1
   lastFramingTime: 907.540744905363
-  m_2DMode: 1
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -90.12871, y: 171.77249, z: -110.6875}
+    m_Target: {x: 7.75916, y: -119.5047, z: 540.619}
     speed: 2
-    m_Value: {x: -90.12871, y: 171.77249, z: -110.6875}
+    m_Value: {x: 7.75916, y: -119.5047, z: 540.619}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -459,25 +459,25 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
     yGrid:
-      m_Target: 0
-      speed: 2
-      m_Value: 0
-    zGrid:
       m_Target: 1
       speed: 2
       m_Value: 1
+    zGrid:
+      m_Target: 0
+      speed: 2
+      m_Value: 0
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: 0.10808904, y: 0.01282714, z: -0.0013947481, w: 0.99405754}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: 0.10808904, y: 0.01282714, z: -0.0013947481, w: 0.99405754}
   m_Size:
-    m_Target: 465.54266
+    m_Target: 609.06793
     speed: 2
-    m_Value: 465.54266
+    m_Value: 609.06793
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
@@ -553,15 +553,15 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1656
-    y: 236
+    x: 1889
+    y: 199
     width: 200
     height: 619
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: f6c4ffffd0d5ffff00000000a83d0000ea3f0000
+    m_SelectedIDs: e62c0000
+    m_LastClickedID: 11494
+    m_ExpandedIDs: 9edaffffa0daffff08f4ffffd8fbffff00000000e62c0000042f0000762f0000a4310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -606,8 +606,8 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 286
-    y: 876
+    x: 519
+    y: 839
     width: 1066
     height: 326
   m_SearchFilter:
@@ -630,10 +630,10 @@ MonoBehaviour:
   m_LastProjectPath: /Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ee330000
-    m_LastClickedID: 13294
-    m_ExpandedIDs: 000000001232000072320000dc32000040330000683300007833000066340000a434000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 80.29419}
+    m_SelectedIDs: f8280000
+    m_LastClickedID: 10488
+    m_ExpandedIDs: 00000000142500007c250000d0260000a427000020280000422800002e2a0000e42a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -661,7 +661,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001232000072320000dc320000403300006833000066340000a4340000
+    m_ExpandedIDs: 00000000142500007c250000d0260000a427000020280000422800002e2a0000e42a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -738,8 +738,8 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1356
-    y: 876
+    x: 1589
+    y: 839
     width: 500
     height: 326
 --- !u!114 &21
@@ -764,8 +764,8 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1860
-    y: 236
+    x: 2093
+    y: 199
     width: 346
     height: 966
   m_ScrollPosition: {x: 0, y: 0}

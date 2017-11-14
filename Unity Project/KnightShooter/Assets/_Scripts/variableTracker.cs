@@ -20,6 +20,7 @@ public class variableTracker : MonoBehaviour
     public bool P2enabled;
     public bool P3enabled;
     public bool P4enabled;
+	public bool winDone;
 
     // Use this for initialization
     void Start ()
@@ -30,6 +31,7 @@ public class variableTracker : MonoBehaviour
         P4enabled = false;
         DontDestroyOnLoad(this);
         pointsDelivered = false;
+		winDone = false;
     }
 
     // Update is called once per frame
@@ -61,7 +63,10 @@ public class variableTracker : MonoBehaviour
 
 			if (players.Count == 0) {
 				winText = "Draw!! Press Start to continue";
-				LevelEnd ();
+				if (winDone) 
+				{
+					LevelEnd();
+				}
 			}
 
             if (players.Count == 1)
@@ -79,7 +84,10 @@ public class variableTracker : MonoBehaviour
                         P1wins += 1;
                         pointsDelivered = true;
                     }
-                    LevelEnd();
+					if (winDone) 
+					{
+						LevelEnd();
+					}
                 }
                 if (players[0].name == "Player 2")
                 {
@@ -89,7 +97,10 @@ public class variableTracker : MonoBehaviour
                         P2wins += 1;
                         pointsDelivered = true;
                     }
-                    LevelEnd();
+					if (winDone) 
+					{
+						LevelEnd();
+					}
                 }
                 if (players[0].name == "Player 3")
                 {
@@ -99,7 +110,10 @@ public class variableTracker : MonoBehaviour
                         P3wins += 1;
                         pointsDelivered = true;
                     }
-                    LevelEnd();
+					if (winDone) 
+					{
+						LevelEnd();
+					}
                 }
                 if (players[0].name == "Player 4")
                 {
@@ -109,7 +123,10 @@ public class variableTracker : MonoBehaviour
                         P4wins += 1;
                         pointsDelivered = true;
                     }
-                    LevelEnd();
+					if (winDone) 
+					{
+						LevelEnd();
+					}
                 }
             }
         }
