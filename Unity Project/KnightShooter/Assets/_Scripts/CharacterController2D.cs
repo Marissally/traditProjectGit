@@ -117,6 +117,14 @@ public class CharacterController2D : MonoBehaviour {
         _horizontalVelocity = Input.GetAxis(_horizontalControl);
 		_verticalAim = Input.GetAxis(_verticalControl);
 
+        if(ammo == 0)
+        {
+            shotType = "Default";
+            shotgun.enabled = false;
+            bazooka.enabled = false;
+            pistol.enabled = true;
+        }
+
         if (aimType == "4Way")
         {
             if (_right)
@@ -293,10 +301,6 @@ public class CharacterController2D : MonoBehaviour {
         {
 			if (shotType == "Default" || ammo == 0) 
 			{
-                shotType = "Default";
-                shotgun.enabled = false;
-                bazooka.enabled = false;
-                pistol.enabled = true;
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
                 bullet.GetComponent<BulletController>().spawnOrigin = this;
                 if (aimType == "8Way")
@@ -375,7 +379,10 @@ public class CharacterController2D : MonoBehaviour {
 							bullet.AddForce (new Vector2 (_shotSpeed * -1, 0f));
 						}
 					} else {
-						bullet.AddForce (new Vector2 (_shotSpeed * _horizontalVelocity, _shotSpeed * _verticalAim));
+                        Vector2 direction = new Vector2(_horizontalVelocity, _verticalAim);
+                        direction.Normalize();
+						bullet.AddForce (_shotSpeed * direction, ForceMode2D.Force);
+                        
 					}
                 }
             }
@@ -407,14 +414,14 @@ public class CharacterController2D : MonoBehaviour {
                         if (_right)
                         {
                             bullet.AddForce(new Vector2(_shotSpeed, 0f));
-                                bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed));
-                                bullet3.AddForce(new Vector2(_shotSpeed, _shotSpeed * -1));
+                            bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed));
+                            bullet3.AddForce(new Vector2(_shotSpeed, _shotSpeed * -1));
                         }
                         else if (_left)
                         {
                             bullet.AddForce(new Vector2(_shotSpeed * -1, 0f));
-                                bullet2.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed));
-                                bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * -1));
+                            bullet2.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed));
+                            bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * -1));
                         }
                     }
                     else if (_verticalAim > 0)
@@ -423,13 +430,13 @@ public class CharacterController2D : MonoBehaviour {
                         {
                             bullet.AddForce(new Vector2(_shotSpeed, _shotSpeed));
                             bullet2.AddForce(new Vector2(_shotSpeed / 2, _shotSpeed * 2));
-                            bullet3.AddForce(new Vector2(_shotSpeed, _shotSpeed * 2));
+                            bullet3.AddForce(new Vector2(_shotSpeed * 2, _shotSpeed / 2));
                         }
                         else if (_left)
                         {
                             bullet.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed));
-                            bullet2.AddForce(new Vector2((_shotSpeed / 2) * -1, _shotSpeed * 2));
-                            bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * 2));
+                            bullet2.AddForce(new Vector2(_shotSpeed / -2, _shotSpeed * 2));
+                            bullet3.AddForce(new Vector2(_shotSpeed * -2, _shotSpeed / 2));
                         }
                     }
                     
@@ -439,13 +446,13 @@ public class CharacterController2D : MonoBehaviour {
                         {
                             bullet.AddForce(new Vector2(_shotSpeed, _shotSpeed * -1));
                             bullet2.AddForce(new Vector2(_shotSpeed / 2, _shotSpeed * -2));
-                            bullet3.AddForce(new Vector2(_shotSpeed, _shotSpeed * -2));
+                            bullet3.AddForce(new Vector2(_shotSpeed * 2, _shotSpeed / -2));
                         }
                         else if (_left)
                         {
                             bullet.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * -1));
-                            bullet2.AddForce(new Vector2((_shotSpeed / 2) * -1, _shotSpeed * -2));
-                            bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * -2));
+                            bullet2.AddForce(new Vector2(_shotSpeed / -2, _shotSpeed * -2));
+                            bullet3.AddForce(new Vector2(_shotSpeed * -2, _shotSpeed / -2));
                         }
                     }
                     
@@ -486,9 +493,45 @@ public class CharacterController2D : MonoBehaviour {
                 if (aimType == "360")
                 {
                     //Code
-                    bullet.AddForce(new Vector2(_shotSpeed * _horizontalVelocity, _shotSpeed * _verticalAim));
-                    bullet2.AddForce(new Vector2(_shotSpeed * (_horizontalVelocity - 0.5f), _shotSpeed * (_verticalAim + 0.5f)));
-                    bullet3.AddForce(new Vector2(_shotSpeed * (_horizontalVelocity + 0.5f), _shotSpeed * (_verticalAim - 0.5f)));
+                    if (_horizontalVelocity == 0 && _verticalAim == 0)
+                    {
+                        if (_right)
+                        {
+                            bullet.AddForce(new Vector2(_shotSpeed, 0f));
+                            bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed));
+                            bullet3.AddForce(new Vector2(_shotSpeed, _shotSpeed * -1));
+                        }
+                        else if (_left)
+                        {
+                            bullet.AddForce(new Vector2(_shotSpeed * -1, 0f));
+                            bullet2.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed));
+                            bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * -1));
+                        }
+                    }
+                    else if (_verticalAim == 1)
+                    {
+                        bullet.AddForce(new Vector2(0f, _shotSpeed));
+                        bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed));
+                        bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed));
+                    }
+                    else if (_verticalAim == -1)
+                    {
+                        bullet.AddForce(new Vector2(0f, _shotSpeed * -1));
+                        bullet2.AddForce(new Vector2(_shotSpeed, _shotSpeed * -1));
+                        bullet3.AddForce(new Vector2(_shotSpeed * -1, _shotSpeed * -1));
+                    }
+                    else
+                    {
+                        Vector2 direction1 = new Vector2(_horizontalVelocity, _verticalAim);
+                        Vector2 direction2 = new Vector2(_horizontalVelocity * 2, _verticalAim / 2);
+                        Vector2 direction3 = new Vector2(_horizontalVelocity / 2, _verticalAim * 2);
+                        direction1.Normalize();
+                        direction2.Normalize();
+                        direction3.Normalize();
+                        bullet.AddForce(_shotSpeed * direction1, ForceMode2D.Force);
+                        bullet2.AddForce(_shotSpeed * direction2, ForceMode2D.Force);
+                        bullet3.AddForce(_shotSpeed * direction3, ForceMode2D.Force);
+                    }
                 }
                 ammo--;
 			}
@@ -565,7 +608,23 @@ public class CharacterController2D : MonoBehaviour {
                 else if (aimType == "360")
                 {
                     //Code
-					bullet.AddForce(new Vector2(_shotSpeed * _horizontalVelocity, _shotSpeed * _verticalAim));
+                    if (_horizontalVelocity == 0 && _verticalAim == 0)
+                    {
+                        if (_right)
+                        {
+                            bullet.AddForce(new Vector2(_shotSpeed, 0f));
+                        }
+                        if (_left)
+                        {
+                            bullet.AddForce(new Vector2(_shotSpeed * -1, 0f));
+                        }
+                    }
+                    else
+                    {
+                        Vector2 direction = new Vector2(_horizontalVelocity, _verticalAim);
+                        direction.Normalize();
+                        bullet.AddForce(_shotSpeed * direction, ForceMode2D.Force);
+                    }
                 }
                 ammo--;
 			}
