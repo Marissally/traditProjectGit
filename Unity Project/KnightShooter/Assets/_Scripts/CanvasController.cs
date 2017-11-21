@@ -9,12 +9,14 @@ public class CanvasController : MonoBehaviour {
     public Text winMessage;
     public Text P1Wins;
     public Text P2Wins;
+    public Image winFade;
 
 
 	// Use this for initialization
 	void Start () {
         varTrack = GameObject.Find("variableTracker").GetComponent<variableTracker>();
         winMessage.enabled = false;
+        winFade.enabled = false;
 	}
 
     void OnGUI ()
@@ -35,5 +37,11 @@ public class CanvasController : MonoBehaviour {
         {
             winMessage.enabled = false;
         }
-	}
+
+        if (varTrack.pointsDelivered && !varTrack.winDone)
+        {
+            winFade.enabled = true;
+        }
+
+    }
 }

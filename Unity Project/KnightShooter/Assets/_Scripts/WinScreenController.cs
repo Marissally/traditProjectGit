@@ -28,11 +28,13 @@ public class WinScreenController : MonoBehaviour {
 		{
             //this.transform.position = Mathf.Lerp(this.transform.position.x, this.transform.position.x + 20, 2);
 			transformed = true;
+            print("Moved");
 			if (transformed) 
 			{
 				if (card.wins1.GetComponent<Renderer>().material = glow) 
 				{
                     wins1.GetComponent<Renderer>().material = glow;
+                    print("Win1");
                 }
 				if (card.wins2.GetComponent<Renderer>().material = glow) 
 				{
@@ -43,6 +45,7 @@ public class WinScreenController : MonoBehaviour {
                     wins3.GetComponent<Renderer>().material = glow;
                 }
 				varTracker.winDone = true;
+                print("Done");
 			}
 		}
 	}
