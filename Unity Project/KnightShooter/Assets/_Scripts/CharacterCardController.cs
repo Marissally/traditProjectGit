@@ -199,7 +199,7 @@ public class CharacterCardController : MonoBehaviour {
             }
         }
 
-        if (characterController.shield == true && shield.enabled == false)
+         if (characterController.shield == true && shield.enabled == false)
         {
             shield.enabled = true;
         }
