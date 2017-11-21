@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 887, y: 492}
+  m_MinSize: {x: 885, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 2534
+  controlID: 6324
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1640
     height: 947
-  m_MinSize: {x: 610, y: 492}
+  m_MinSize: {x: 608, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 2512
+  controlID: 6325
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -155,10 +155,10 @@ MonoBehaviour:
     y: 0
     width: 1640
     height: 573
-  m_MinSize: {x: 610, y: 221}
-  m_MaxSize: {x: 12010, y: 4021}
+  m_MinSize: {x: 608, y: 221}
+  m_MaxSize: {x: 12008, y: 4021}
   vertical: 0
-  controlID: 2513
+  controlID: 6326
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 2433
+  controlID: 6408
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -437,14 +437,14 @@ MonoBehaviour:
     width: 780
     height: 552
   m_SceneLighting: 1
-  lastFramingTime: 3584.424604114095
+  lastFramingTime: 1649.9600278918265
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -5.6466346, y: -0.70160365, z: -11.980469}
+    m_Target: {x: -1.0962987, y: -0.8525051, z: 1.1172836}
     speed: 2
-    m_Value: {x: -5.6466346, y: -0.70160365, z: -11.980469}
+    m_Value: {x: -1.0962987, y: -0.8525051, z: 1.1172836}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -471,9 +471,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 43.95127
+    m_Target: 12.975922
     speed: 2
-    m_Value: 43.95127
+    m_Value: 12.975922
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -538,9 +538,9 @@ MonoBehaviour:
     height: 552
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 6e2f0000
     m_LastClickedID: 0
-    m_ExpandedIDs: f0c8feff1ee7feff3c1fffff8430ffff3a32ffffba43ffff2253ffff3061ffff4c76ffff82f1fffff8f1fffff2f8ffff1afcffff0000000012300000e831000012490000c2a6000064a90000
+    m_ExpandedIDs: 10f4faffb24efbffe453fbffe859fbff445afbffe06bfbff3c6cfbff746ffbff0a87fbff6a9dfbff92cefbffc414fcff345cffff88f9ffff00000000dcaf000098c7000000d90000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -607,13 +607,13 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/_Scenes
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: D:\Sean\Works\Traditional Project\traditProjectGit\Unity Project\KnightShooter
+  m_LastProjectPath: C:\Users\Dad PC\Desktop\traditProjectGit\Unity Project\KnightShooter
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 4}
-    m_SelectedIDs: 482c0000
-    m_LastClickedID: 11336
-    m_ExpandedIDs: 000000007e260000c6260000f828000080290000a22900009a2b0000602c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 9c2f0000
+    m_LastClickedID: 12188
+    m_ExpandedIDs: 00000000e0290000282a00003a2b0000522c0000fc2c0000f22e0000b42f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -641,7 +641,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007e260000c6260000f828000080290000a22900009a2b0000602c000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000e0290000282a00003a2b0000522c0000fc2c0000f22e0000b42f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
