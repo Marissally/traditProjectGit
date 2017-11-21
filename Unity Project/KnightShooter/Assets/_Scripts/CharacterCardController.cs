@@ -5,22 +5,25 @@ using UnityEngine.UI;
 
 public class CharacterCardController : MonoBehaviour {
 
-    public Image wins1;
-    public Image wins2;
-    public Image wins3;
+    public GameObject wins1;
+    public GameObject wins2;
+    public GameObject wins3;
     public Image rocket;
     public Image shotgun;
     public Image shield;
     private variableTracker varTrack;
     public CharacterController2D characterController;
+    public Material glow;
+    public Material unlit;
+    public Text ammoCount;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         varTrack = GameObject.Find("variableTracker").GetComponent<variableTracker>();
         //characterController = GameObject.Find("Player 1").GetComponent<CharacterController2D>();
-        wins1.enabled = false;
-        wins2.enabled = false;
-        wins3.enabled = false;
+        wins1.GetComponent<Renderer>().material = unlit;
+        wins2.GetComponent<Renderer>().material = unlit;
+        wins3.GetComponent<Renderer>().material = unlit;
         rocket.enabled = false;
         shotgun.enabled = false;
         shield.enabled = false;
@@ -32,37 +35,40 @@ public class CharacterCardController : MonoBehaviour {
         {
             if (varTrack.P1wins == 1)
             {
-                wins1.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = unlit;
+                wins3.GetComponent<Renderer>().material = unlit;
             }
 
             if (varTrack.P1wins == 2)
             {
-                wins1.enabled = true;
-                wins2.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = glow;
+                wins3.GetComponent<Renderer>().material = unlit;
             }
 
             if (varTrack.P1wins == 3)
             {
-                wins1.enabled = true;
-                wins2.enabled = true;
-                wins3.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = glow;
+                wins3.GetComponent<Renderer>().material = glow;
             }
 
             if (varTrack.P1wins == 0)
             {
-                if (wins1.enabled == true)
+                if (wins1.GetComponent<Renderer>().material = glow)
                 {
-                    wins1.enabled = false;
+                    wins1.GetComponent<Renderer>().material = unlit;
                 }
 
-                if (wins2.enabled == true)
+                if (wins2.GetComponent<Renderer>().material = glow)
                 {
-                    wins2.enabled = false;
+                    wins2.GetComponent<Renderer>().material = unlit;
                 }
 
-                if (wins3.enabled == true)
+                if (wins3.GetComponent<Renderer>().material = glow)
                 {
-                    wins3.enabled = false;
+                    wins3.GetComponent<Renderer>().material = unlit;
                 }
             }
         }
@@ -71,37 +77,40 @@ public class CharacterCardController : MonoBehaviour {
         {
             if (varTrack.P2wins == 1)
             {
-                wins1.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = unlit;
+                wins3.GetComponent<Renderer>().material = unlit;
             }
 
             if (varTrack.P2wins == 2)
             {
-                wins1.enabled = true;
-                wins2.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = glow;
+                wins3.GetComponent<Renderer>().material = unlit;
             }
 
             if (varTrack.P2wins == 3)
             {
-                wins1.enabled = true;
-                wins2.enabled = true;
-                wins3.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = glow;
+                wins3.GetComponent<Renderer>().material = glow;
             }
 
             if (varTrack.P2wins == 0)
             {
-                if (wins1.enabled == true)
+                if (wins1.GetComponent<Renderer>().material = glow)
                 {
-                    wins1.enabled = false;
+                    wins1.GetComponent<Renderer>().material = unlit;
                 }
 
-                if (wins2.enabled == true)
+                if (wins2.GetComponent<Renderer>().material = glow)
                 {
-                    wins2.enabled = false;
+                    wins2.GetComponent<Renderer>().material = unlit;
                 }
 
-                if (wins3.enabled == true)
+                if (wins3.GetComponent<Renderer>().material = glow)
                 {
-                    wins3.enabled = false;
+                    wins3.GetComponent<Renderer>().material = unlit;
                 }
             }
         }
@@ -110,37 +119,40 @@ public class CharacterCardController : MonoBehaviour {
         {
             if (varTrack.P3wins == 1)
             {
-                wins1.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = unlit;
+                wins3.GetComponent<Renderer>().material = unlit;
             }
 
             if (varTrack.P3wins == 2)
             {
-                wins1.enabled = true;
-                wins2.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = glow;
+                wins3.GetComponent<Renderer>().material = unlit;
             }
 
             if (varTrack.P3wins == 3)
             {
-                wins1.enabled = true;
-                wins2.enabled = true;
-                wins3.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = glow;
+                wins3.GetComponent<Renderer>().material = glow;
             }
 
             if (varTrack.P3wins == 0)
             {
-                if (wins1.enabled == true)
+                if (wins1.GetComponent<Renderer>().material = glow)
                 {
-                    wins1.enabled = false;
+                    wins1.GetComponent<Renderer>().material = unlit;
                 }
 
-                if (wins2.enabled == true)
+                if (wins2.GetComponent<Renderer>().material = glow)
                 {
-                    wins2.enabled = false;
+                    wins2.GetComponent<Renderer>().material = unlit;
                 }
 
-                if (wins3.enabled == true)
+                if (wins3.GetComponent<Renderer>().material = glow)
                 {
-                    wins3.enabled = false;
+                    wins3.GetComponent<Renderer>().material = unlit;
                 }
             }
         }
@@ -149,37 +161,40 @@ public class CharacterCardController : MonoBehaviour {
         {
             if (varTrack.P4wins == 1)
             {
-                wins1.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = unlit;
+                wins3.GetComponent<Renderer>().material = unlit;
             }
 
             if (varTrack.P4wins == 2)
             {
-                wins1.enabled = true;
-                wins2.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = glow;
+                wins3.GetComponent<Renderer>().material = unlit;
             }
 
             if (varTrack.P4wins == 3)
             {
-                wins1.enabled = true;
-                wins2.enabled = true;
-                wins3.enabled = true;
+                wins1.GetComponent<Renderer>().material = glow;
+                wins2.GetComponent<Renderer>().material = glow;
+                wins3.GetComponent<Renderer>().material = glow;
             }
 
             if (varTrack.P4wins == 0)
             {
-                if (wins1.enabled == true)
+                if (wins1.GetComponent<Renderer>().material = glow)
                 {
-                    wins1.enabled = false;
+                    wins1.GetComponent<Renderer>().material = unlit;
                 }
 
-                if (wins2.enabled == true)
+                if (wins2.GetComponent<Renderer>().material = glow)
                 {
-                    wins2.enabled = false;
+                    wins2.GetComponent<Renderer>().material = unlit;
                 }
 
-                if (wins3.enabled == true)
+                if (wins3.GetComponent<Renderer>().material = glow)
                 {
-                    wins3.enabled = false;
+                    wins3.GetComponent<Renderer>().material = unlit;
                 }
             }
         }
@@ -198,6 +213,8 @@ public class CharacterCardController : MonoBehaviour {
         {
             rocket.enabled = true;
         }
+
+        ammoCount.text = characterController.ammo.ToString();
 
         if (characterController.ammo == 0)
         {

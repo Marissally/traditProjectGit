@@ -9,7 +9,8 @@ public class CharMenuController : MonoBehaviour {
 
     private GameObject startButton;
 	public bool readied;
-	public Image readyImage;
+	public Image readiedImage;
+    public Text readyText;
 	public SpriteRenderer Player;
     public KeyCode confirm;
     public KeyCode cancel;
@@ -17,6 +18,7 @@ public class CharMenuController : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        readiedImage.enabled = false;
 		readied = false;
         Player.enabled = false;
         //readyImage = GameObject.Find ("readyImage").GetComponent<Image>();
@@ -80,29 +82,35 @@ public class CharMenuController : MonoBehaviour {
     {
 		if (Input.GetKeyDown(confirm))
         {
-			readyImage.color = new Color32 (200, 200, 200, 100);
+			readyText.color = new Color32 (200, 200, 200, 100);
         }
 
 		if (Input.GetKeyUp (confirm)) 
 		{
 			readied = true;
-			readyImage.color = new Color32 (220, 220, 220, 100);
+            readyText.color = new Color32 (220, 220, 220, 100);
 			Player.enabled = true;
+            readiedImage.enabled = true;
+            readyText.enabled = false;
 		}
 
 		if (Input.GetKeyDown (cancel)) 
 		{
-            readyImage.color = new Color32(210, 210, 210, 100);
-		}
+            readyText.color = new Color32(210, 210, 210, 100);
+            readiedImage.color = new Color32(210, 210, 210, 100);
+        }
 
         if (Input.GetKeyUp (cancel))
         {
-            readyImage.color = new Color32(255, 255, 255, 100);
+            readyText.color = new Color32(255, 255, 255, 100);
+            readiedImage.color = new Color32(255, 255, 255, 100);
 
             if (readied == true)
             {
                 readied = false;
                 Player.enabled = false;
+                readiedImage.enabled = false;
+                readyText.enabled = true;
             }
 
             else

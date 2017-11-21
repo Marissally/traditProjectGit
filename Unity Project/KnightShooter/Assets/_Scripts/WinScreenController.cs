@@ -26,19 +26,19 @@ public class WinScreenController : MonoBehaviour {
 	void Update () {
 		if (varTracker.pointsDelivered && !varTracker.winDone) 
 		{
-            this.transform.position = Mathf.Lerp(this.transform.position.x, this.transform.position.x + 20, 2);
+            //this.transform.position = Mathf.Lerp(this.transform.position.x, this.transform.position.x + 20, 2);
 			transformed = true;
 			if (transformed) 
 			{
-				if (card.wins1.enabled) 
+				if (card.wins1.GetComponent<Renderer>().material = glow) 
 				{
                     wins1.GetComponent<Renderer>().material = glow;
                 }
-				if (card.wins2.enabled) 
+				if (card.wins2.GetComponent<Renderer>().material = glow) 
 				{
                     wins2.GetComponent<Renderer>().material = glow;
                 }
-				if (card.wins3.enabled) 
+				if (card.wins3.GetComponent<Renderer>().material = glow) 
 				{
                     wins3.GetComponent<Renderer>().material = glow;
                 }
