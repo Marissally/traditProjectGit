@@ -154,7 +154,7 @@ public class variableTracker : MonoBehaviour
                 P2wins = 0;
                 P3wins = 0;
                 P4wins = 0;
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
                 print("Loaded");
             }
 
