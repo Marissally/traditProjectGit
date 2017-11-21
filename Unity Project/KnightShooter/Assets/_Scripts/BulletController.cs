@@ -38,8 +38,13 @@ public class BulletController : MonoBehaviour {
 			PlatformController platform = collision.gameObject.GetComponent<PlatformController> ();
 			if (platform.durability > 0) {
 				platform.durability--;
-				Destroy (gameObject);
-			}
+                Destroy (gameObject);
+                //print(platform.GetComponent<Renderer>().material.color);
+                //platform.GetComponent<Renderer>().material.color = collideColor;
+                //yield return new WaitForSeconds(.1f);
+                //platform.GetComponent<Renderer>().material.color = normalColor;
+                //yield return new WaitForSeconds(.1f);
+            }
         }
 		if (collision.gameObject.tag == "DestructiblePlat") 
 		{
