@@ -1,0 +1,22 @@
+print "Starting maya loading and fbx conversion \n";
+	
+if (`file -q -exists "/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Assets/Art Assets/3D/assets.mb"`)
+{		
+	file -o "/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Assets/Art Assets/3D/assets.mb";
+	FBXExportEmbeddedTextures -v false;
+	// FBXExportHardEdges -v true;
+	FBXExportApplyConstantKeyReducer -v false;
+	FBXExportShowUI -v false;
+
+	print "Before fbx export\n";
+	FBXExport -f "/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/ExportedFBXFile.fbx";
+	print "after fbx export\n";
+}
+else
+	print "Could not open Maya file.";
+
+sysFile -delete "/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/CommandPipe";
+
+$donepipeKill = `fopen "/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/SyncPipeKill" "w"`;
+fwrite $donepipeKill "Done";
+fclose $donepipeKill;

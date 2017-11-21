@@ -21,6 +21,7 @@ public class variableTracker : MonoBehaviour
     public bool P3enabled;
     public bool P4enabled;
 	public bool winDone;
+	public KeyCode startButton;
 
     // Use this for initialization
     void Start ()
@@ -32,6 +33,14 @@ public class variableTracker : MonoBehaviour
         DontDestroyOnLoad(this);
         pointsDelivered = false;
 		winDone = false;
+		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) 
+		{
+			startButton = KeyCode.JoystickButton9;
+		}
+		if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor) 
+		{
+			startButton = KeyCode.JoystickButton9;
+		}
     }
 
     // Update is called once per frame
@@ -136,7 +145,7 @@ public class variableTracker : MonoBehaviour
     {
         //use button 7 for pc
         //use button 9 for mac
-        if (Input.GetKeyDown(KeyCode.Joystick1Button7) || Input.GetKeyDown(KeyCode.Joystick2Button9))
+		if (Input.GetKeyDown(startButton))
         {
             if (P1wins == 3 || P2wins == 3 || P3wins == 3 || P4wins == 3)
             {
