@@ -39,7 +39,7 @@ public class CharacterController2D : MonoBehaviour {
 	public SpriteRenderer crown;
     public string aimType;
 	public variableTracker varTrack;
-	public int reloadTime;
+	public float reloadTime;
 	public bool _canShoot;
 
 
@@ -364,7 +364,7 @@ public class CharacterController2D : MonoBehaviour {
         {
 			if (shotType == "Default" || ammo == 0) 
 			{
-				reloadTime = 1;
+				reloadTime = .25f;
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
                 bullet.GetComponent<BulletController>().spawnOrigin = this;
                 if (aimType == "8Way")
@@ -455,7 +455,7 @@ public class CharacterController2D : MonoBehaviour {
 
 			if (shotType == "Shotgun" && ammo != 0) 
 			{
-				reloadTime = 2;
+				reloadTime = .75f;
 				//WaitForSeconds(reloadTime);
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
 				Rigidbody2D bullet2 = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
@@ -608,7 +608,7 @@ public class CharacterController2D : MonoBehaviour {
 
 			if (shotType == "Rocket" && ammo != 0) 
 			{
-				reloadTime = 4;
+				reloadTime = 1.5f;
 				//WaitForSeconds(reloadTime);
 				Rigidbody2D bullet = Instantiate (_rocket, transform.position, transform.rotation) as Rigidbody2D;
                 bullet.GetComponent<RocketController>().spawnOrigin = this;
@@ -749,7 +749,7 @@ public class CharacterController2D : MonoBehaviour {
         }
     }
 
-	IEnumerator ReloadTimer(int s)
+	IEnumerator ReloadTimer(float s)
 	{
 		yield return new WaitForSeconds (s);
 		_canShoot = true;
