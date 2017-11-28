@@ -36,17 +36,24 @@ public class CharacterController2D : MonoBehaviour {
     public SpriteRenderer bazooka;
     public SpriteRenderer shotgun;
     public SpriteRenderer shieldImage;
+	public SpriteRenderer crown;
     public string aimType;
+	public variableTracker varTrack;
+	public int reloadTime;
+	public bool _canShoot;
 
 
 
     // Use this for initialization
     void Start () {
+		varTrack = GameObject.Find("variableTracker").GetComponent<variableTracker>();
         _rb = GetComponent<Rigidbody2D>();
+		_canShoot = true;
 		_anim = this.GetComponentInChildren<Animator> ();
 		_anim.SetBool (walking, false);
         bazooka.enabled = false;
         shotgun.enabled = false;
+		crown.enabled = false;
         _crouched = false;
         aimType = "8Way";
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
@@ -124,6 +131,38 @@ public class CharacterController2D : MonoBehaviour {
             bazooka.enabled = false;
             pistol.enabled = true;
         }
+
+		if (this.name == "Player 1")
+		{
+			if (varTrack.P1winning) 
+			{
+				crown.enabled = true;
+			}
+		}
+
+		if (this.name == "Player 2")
+		{
+			if (varTrack.P2winning) 
+			{
+				crown.enabled = true;
+			}
+		}
+
+		if (this.name == "Player 3")
+		{
+			if (varTrack.P3winning) 
+			{
+				crown.enabled = true;
+			}
+		}
+
+		if (this.name == "Player 4")
+		{
+			if (varTrack.P4winning) 
+			{
+				crown.enabled = true;
+			}
+		}
 
         if (aimType == "4Way")
         {
@@ -321,10 +360,11 @@ public class CharacterController2D : MonoBehaviour {
 
         //use button 2 for pc
         //use button 18 for mac
-        if (Input.GetKeyDown(shootButton))
+        if (Input.GetKeyDown(shootButton) && _canShoot)
         {
 			if (shotType == "Default" || ammo == 0) 
 			{
+				reloadTime = 1;
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
                 bullet.GetComponent<BulletController>().spawnOrigin = this;
                 if (aimType == "8Way")
@@ -409,10 +449,14 @@ public class CharacterController2D : MonoBehaviour {
                         
 					}
                 }
+				_canShoot = false;
+				StartCoroutine(ReloadTimer (reloadTime));
             }
 
 			if (shotType == "Shotgun" && ammo != 0) 
 			{
+				reloadTime = 2;
+				//WaitForSeconds(reloadTime);
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
 				Rigidbody2D bullet2 = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
 				Rigidbody2D bullet3 = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
@@ -558,10 +602,14 @@ public class CharacterController2D : MonoBehaviour {
                     }
                 }
                 ammo--;
+				_canShoot = false;
+				StartCoroutine(ReloadTimer (reloadTime));
 			}
 
 			if (shotType == "Rocket" && ammo != 0) 
 			{
+				reloadTime = 4;
+				//WaitForSeconds(reloadTime);
 				Rigidbody2D bullet = Instantiate (_rocket, transform.position, transform.rotation) as Rigidbody2D;
                 bullet.GetComponent<RocketController>().spawnOrigin = this;
                 if (aimType == "8Way")
@@ -651,6 +699,8 @@ public class CharacterController2D : MonoBehaviour {
                     }
                 }
                 ammo--;
+				_canShoot = false;
+				StartCoroutine(ReloadTimer (reloadTime));
 			}
         }
     }
@@ -698,4 +748,10 @@ public class CharacterController2D : MonoBehaviour {
             }
         }
     }
+
+	IEnumerator ReloadTimer(int s)
+	{
+		yield return new WaitForSeconds (s);
+		_canShoot = true;
+	}
 }

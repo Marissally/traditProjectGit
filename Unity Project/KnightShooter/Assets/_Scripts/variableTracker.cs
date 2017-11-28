@@ -21,6 +21,10 @@ public class variableTracker : MonoBehaviour
     public bool P3enabled;
     public bool P4enabled;
 	public bool winDone;
+	public bool P1winning;
+	public bool P2winning;
+	public bool P3winning;
+	public bool P4winning;
 	public KeyCode startButton;
 
     // Use this for initialization
@@ -30,6 +34,10 @@ public class variableTracker : MonoBehaviour
         P2enabled = false;
         P3enabled = false;
         P4enabled = false;
+		P1winning = false;
+		P2winning = false;
+		P3winning = false;
+		P4winning = false;
         DontDestroyOnLoad(this);
         pointsDelivered = false;
 		winDone = false;
@@ -76,6 +84,26 @@ public class variableTracker : MonoBehaviour
 				{
 					LevelEnd();
 				}
+			}
+				
+			if (P1wins > P2wins && P1wins > P3wins && P1wins > P4wins) 
+			{
+				P1winning = true;
+			} 
+
+			else if (P2wins > P1wins && P2wins > P3wins && P2wins > P4wins) 
+			{
+				P2winning = true;
+			} 
+
+			else if (P3wins > P1wins && P3wins > P2wins && P3wins > P4wins) 
+			{
+				P3winning = true;
+			} 
+
+			else if (P4wins > P1wins && P4wins > P2wins && P4wins > P3wins) 
+			{
+				P4winning = true;
 			}
 
             if (players.Count == 1)
