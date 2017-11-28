@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour {
+	
+	private Color32 collideColor;
+	private Color32 normalColor;
+	PlatformController platform;
 
     public CharacterController2D spawnOrigin;
 	// Use this for initialization
 	void Start () {
-		
+		collideColor = new Color32(255,255,255,255);
 	}
 	
 	// Update is called once per frame
@@ -35,15 +39,13 @@ public class BulletController : MonoBehaviour {
         }
         if (collision.gameObject.tag == "DamagablePlat")
         {
-			PlatformController platform = collision.gameObject.GetComponent<PlatformController> ();
+			platform = collision.gameObject.GetComponent<PlatformController> ();
 			if (platform.durability > 0) {
 				platform.durability--;
                 Destroy (gameObject);
-                //print(platform.GetComponent<Renderer>().material.color);
-                //platform.GetComponent<Renderer>().material.color = collideColor;
-                //yield return new WaitForSeconds(.1f);
-                //platform.GetComponent<Renderer>().material.color = normalColor;
-                //yield return new WaitForSeconds(.1f);
+				normalColor = platform.GetComponentInChildren<Renderer> ().material.color;
+				platform.GetComponentInChildren<Renderer>().material.color = collideColor;
+				FlashWait (.2f);
             }
         }
 		if (collision.gameObject.tag == "DestructiblePlat") 
@@ -56,4 +58,10 @@ public class BulletController : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+	private IEnumerator FlashWait(float s)
+	{
+		yield return new WaitForSeconds (s);
+		platform.GetComponentInChildren<Renderer>().material.color = normalColor;
+	}
 }
