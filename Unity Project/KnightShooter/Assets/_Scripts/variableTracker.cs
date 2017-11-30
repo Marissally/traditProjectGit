@@ -89,20 +89,32 @@ public class variableTracker : MonoBehaviour
 			if (P1wins > P2wins && P1wins > P3wins && P1wins > P4wins) 
 			{
 				P1winning = true;
+				P2winning = false;
+				P3winning = false;
+				P4winning = false;
 			} 
 
 			else if (P2wins > P1wins && P2wins > P3wins && P2wins > P4wins) 
 			{
+				P1winning = false;
 				P2winning = true;
+				P3winning = false;
+				P4winning = false;
 			} 
 
 			else if (P3wins > P1wins && P3wins > P2wins && P3wins > P4wins) 
 			{
+				P1winning = false;
+				P2winning = false;
 				P3winning = true;
+				P4winning = false;
 			} 
 
 			else if (P4wins > P1wins && P4wins > P2wins && P4wins > P3wins) 
 			{
+				P1winning = false;
+				P2winning = false;
+				P3winning = false;
 				P4winning = true;
 			}
 
