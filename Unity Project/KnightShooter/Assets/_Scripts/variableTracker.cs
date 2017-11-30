@@ -77,14 +77,6 @@ public class variableTracker : MonoBehaviour
 					Destroy (players [i]);
 				}
 			}
-
-			if (players.Count == 0) {
-				winText = "Draw!! Press Start to continue";
-				if (winDone) 
-				{
-					LevelEnd();
-				}
-			}
 				
 			if (P1wins > P2wins && P1wins > P3wins && P1wins > P4wins) 
 			{
@@ -177,7 +169,27 @@ public class variableTracker : MonoBehaviour
 						LevelEnd();
 					}
                 }
+				if (players.Count == 0) {
+					winText = "Draw!! Press Start to continue";
+					if (!pointsDelivered) {
+						pointsDelivered = true;
+					}
+					if (winDone) 
+					{
+						LevelEnd();
+					}
+				}
             }
+			else if (players.Count == 0) {
+				winText = "Draw!! Press Start to continue";
+				if (!pointsDelivered) {
+					pointsDelivered = true;
+				}
+				if (winDone) 
+				{
+					LevelEnd();
+				}
+			}
         }
 	}
 

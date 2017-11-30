@@ -282,6 +282,7 @@ public class CharacterController2D : MonoBehaviour {
             bazooka.flipX = true;
             shotgun.flipX = true;
             shieldImage.flipX = false;
+			crown.flipX = true;
 		}
 		if (_right) {
 			this.GetComponentInChildren<SpriteRenderer> ().flipX = true;
@@ -289,6 +290,7 @@ public class CharacterController2D : MonoBehaviour {
             bazooka.flipX = false;
             shotgun.flipX = false;
             shieldImage.flipX = true;
+			crown.flipX = false;
 		}
         if (!_grounded)
         {
@@ -315,6 +317,7 @@ public class CharacterController2D : MonoBehaviour {
         {
             _crouched = true;
             aimType = "360";
+			this.transform.localScale = new Vector3 (1, .5f, 1);
         }
 
         if(Input.GetKeyUp(crouchButton))
@@ -322,6 +325,7 @@ public class CharacterController2D : MonoBehaviour {
             _crouched = false;
             aimType = "8Way";
             //aimType = "4Way";
+			this.transform.localScale = new Vector3 (1,1,1);
         }
 
         if (Mathf.Abs(_rb.velocity.x) < _maxSpeed)
@@ -561,7 +565,7 @@ public class CharacterController2D : MonoBehaviour {
                 if (aimType == "360")
                 {
                     //Code
-                    if (_horizontalVelocity == 0 && _verticalAim == 0)
+                    if (_verticalAim == 0)
                     {
                         if (_right)
                         {
@@ -725,7 +729,7 @@ public class CharacterController2D : MonoBehaviour {
             {
                 Destroy(collision.gameObject);
                 shotType = "Shotgun";
-                ammo = 12;
+                ammo = 6;
                 pistol.enabled = false;
                 shotgun.enabled = true;
                 shield = false;
