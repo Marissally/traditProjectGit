@@ -59,7 +59,18 @@ public class variableTracker : MonoBehaviour
             players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
             cards = new List<GameObject>(GameObject.FindGameObjectsWithTag("Card"));
 
-            if (P1enabled)
+			if (players.Count == 0) {
+				winText = "Draw!! Press Start to continue";
+				if (!pointsDelivered) {
+					pointsDelivered = true;
+				}
+				if (winDone) 
+				{
+					LevelEnd();
+				}
+			}
+
+            else if (P1enabled)
             {
                 players[0].SetActive(true);
                 cards[0].SetActive(true);
@@ -169,27 +180,7 @@ public class variableTracker : MonoBehaviour
 						LevelEnd();
 					}
                 }
-				if (players.Count == 0) {
-					winText = "Draw!! Press Start to continue";
-					if (!pointsDelivered) {
-						pointsDelivered = true;
-					}
-					if (winDone) 
-					{
-						LevelEnd();
-					}
-				}
             }
-			else if (players.Count == 0) {
-				winText = "Draw!! Press Start to continue";
-				if (!pointsDelivered) {
-					pointsDelivered = true;
-				}
-				if (winDone) 
-				{
-					LevelEnd();
-				}
-			}
         }
 	}
 

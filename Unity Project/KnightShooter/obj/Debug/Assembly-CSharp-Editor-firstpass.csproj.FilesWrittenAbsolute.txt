@@ -86,3 +86,8 @@
 /Users/Home/Desktop/traditProjectGit-master/Unity Project/KnightShooter/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
 /Users/Home/Desktop/traditProjectGit-master/Unity Project/KnightShooter/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
 /Users/Home/Desktop/traditProjectGit-master/Unity Project/KnightShooter/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
+/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/bin/Debug/DOTween.dll
+/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/bin/Debug/DOTween43.dll
+/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/bin/Debug/DOTween46.dll
+/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/bin/Debug/DOTween50.dll
+/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/bin/Debug/DOTweenEditor.dll

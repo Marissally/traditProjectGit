@@ -42,3 +42,7 @@
 /Users/Home/Desktop/traditProjectGit-master/Unity Project/KnightShooter/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/Home/Desktop/traditProjectGit-master/Unity Project/KnightShooter/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/Home/Desktop/traditProjectGit-master/Unity Project/KnightShooter/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/bin/Debug/DOTween.dll
+/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/bin/Debug/DOTween43.dll
+/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/bin/Debug/DOTween46.dll
+/Users/Home/Documents/GitHub/traditProjectGit/Unity Project/KnightShooter/Temp/bin/Debug/DOTween50.dll
