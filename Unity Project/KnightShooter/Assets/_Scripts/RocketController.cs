@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class RocketController : MonoBehaviour {
 
+	public GameObject explo;
+	public Animator _anim;
+
 	Collider2D[] explodeRadius;
     public CharacterController2D spawnOrigin;
 
 	// Use this for initialization
 	void Start () {
 		explodeRadius = new Collider2D[20];
+		_anim = explo.GetComponent<Animator> ();
+
 	}
 	
 	// Update is called once per frame
@@ -33,6 +38,8 @@ public class RocketController : MonoBehaviour {
 			else
             {
 				Destroy (gameObject);
+				GameObject explosion = Instantiate (explo, transform.position, transform.rotation);
+				//_anim.SetBool (pop, true);
 			}
 			Physics2D.OverlapCircle(transform.position, 1.5f, new ContactFilter2D(), explodeRadius);
 
