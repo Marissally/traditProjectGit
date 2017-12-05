@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour {
 	
-	private Color32 collideColor;
-	private Color32 normalColor;
 	PlatformController platform;
 
     public CharacterController2D spawnOrigin;
 	// Use this for initialization
 	void Start () {
-		collideColor = new Color32(255,255,255,255);
 	}
 	
 	// Update is called once per frame
@@ -43,9 +40,9 @@ public class BulletController : MonoBehaviour {
 			if (platform.durability > 0) {
 				platform.durability--;
                 Destroy (gameObject);
-				normalColor = platform.GetComponentInChildren<Renderer> ().material.color;
-				platform.GetComponentInChildren<Renderer>().material.color = collideColor;
-				FlashWait (.2f);
+				Color32 materialColor = platform.GetComponentInChildren<Renderer> ().material.color;
+				materialColor.b = materialColor.g = materialColor.r -= 30;
+				platform.GetComponentInChildren<Renderer> ().material.color = materialColor;
             }
         }
 		if (collision.gameObject.tag == "DestructiblePlat") 
@@ -62,6 +59,6 @@ public class BulletController : MonoBehaviour {
 	private IEnumerator FlashWait(float s)
 	{
 		yield return new WaitForSeconds (s);
-		platform.GetComponentInChildren<Renderer>().material.color = normalColor;
+		//platform.GetComponentInChildren<Renderer>().material.color = normalColor;
 	}
 }
