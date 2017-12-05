@@ -277,7 +277,7 @@ public class CharacterController2D : MonoBehaviour {
         }
 
 		if (_left) {
-			this.GetComponentInChildren<SpriteRenderer> ().flipX = false;
+			this.GetComponentInChildren<SpriteRenderer> ().flipX = true;
             pistol.flipX = true;
             bazooka.flipX = true;
             shotgun.flipX = true;
@@ -285,7 +285,7 @@ public class CharacterController2D : MonoBehaviour {
 			crown.flipX = true;
 		}
 		if (_right) {
-			this.GetComponentInChildren<SpriteRenderer> ().flipX = true;
+			this.GetComponentInChildren<SpriteRenderer> ().flipX = false;
             pistol.flipX = false;
             bazooka.flipX = false;
             shotgun.flipX = false;

@@ -29,18 +29,14 @@ public class RocketController : MonoBehaviour {
         {
 			if (collision.gameObject.tag == "Player")
             {
-                CharacterController2D player = collision.gameObject.GetComponent<CharacterController2D>();
-                if (player == spawnOrigin)
-                {
-                    return;
-                }
+               	CharacterController2D player = collision.gameObject.GetComponent<CharacterController2D>();
+				if (player == spawnOrigin) {
+					return;
+				}
             } 
-			else
-            {
-				Destroy (gameObject);
-				GameObject explosion = Instantiate (explo, transform.position, transform.rotation);
-				//_anim.SetBool (pop, true);
-			}
+			Destroy (gameObject);
+			GameObject explosion = Instantiate (explo, transform.position, transform.rotation);
+			//_anim.SetBool (pop, true);
 			Physics2D.OverlapCircle(transform.position, 1.5f, new ContactFilter2D(), explodeRadius);
 
 			foreach (Collider2D o in explodeRadius) {

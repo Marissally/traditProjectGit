@@ -14,7 +14,7 @@ public class floatScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (Mathf.Sin (Time.time));
+		//print (Mathf.Sin (Time.time));
 		this.transform.position = new Vector3(origin.x, origin.y + .25f + (Mathf.Sin (Time.time) * amp), origin.z);
     }
 }
