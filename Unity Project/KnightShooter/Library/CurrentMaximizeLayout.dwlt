@@ -28,11 +28,11 @@ MonoBehaviour:
 =======
     width: 1636
     height: 947
-<<<<<<< HEAD
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
   controlID: 25
+<<<<<<< HEAD
 =======
   m_MinSize: {x: 887, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
@@ -40,6 +40,8 @@ MonoBehaviour:
   controlID: 131
 >>>>>>> 91798890e57a657d136cf530b414818f294a2570
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
+=======
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,11 +146,11 @@ MonoBehaviour:
 =======
     width: 1284
     height: 947
-<<<<<<< HEAD
   m_MinSize: {x: 604, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
   controlID: 26
+<<<<<<< HEAD
 =======
   m_MinSize: {x: 610, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
@@ -156,6 +158,8 @@ MonoBehaviour:
   controlID: 132
 >>>>>>> 91798890e57a657d136cf530b414818f294a2570
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
+=======
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -188,12 +192,14 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 221}
   m_MaxSize: {x: 12004, y: 4021}
   vertical: 0
-<<<<<<< HEAD
   controlID: 155
+<<<<<<< HEAD
 =======
   controlID: 133
 >>>>>>> 91798890e57a657d136cf530b414818f294a2570
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
+=======
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -246,9 +252,14 @@ MonoBehaviour:
 =======
     width: 451
     height: 550
+<<<<<<< HEAD
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
+=======
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
   m_ActualView: {fileID: 7}
   m_Panes:
   - {fileID: 7}
@@ -486,6 +497,7 @@ MonoBehaviour:
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedIDs: 0c070000
     m_LastClickedID: 0
     m_ExpandedIDs: 8281feff388ffeff0693feff9c96feff9697feffe89efeff3cb5fefff0c3feff3cccfeff7ae4feff22f7feffc2fafeff6efffeff8018ffff5e31ffffaa39ffff88fbffff00000000e880000082830000eab0000084b30000
@@ -500,6 +512,11 @@ MonoBehaviour:
     m_ExpandedIDs: d8fbffff00000000
 >>>>>>> 91798890e57a657d136cf530b414818f294a2570
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
+=======
+    m_SelectedIDs: 04390000
+    m_LastClickedID: 14596
+    m_ExpandedIDs: e8f9ffff88fbffff00000000063600009a360000a0380000
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -554,12 +571,14 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-<<<<<<< HEAD
   controlID: 27
+<<<<<<< HEAD
 =======
   controlID: 62
 >>>>>>> 91798890e57a657d136cf530b414818f294a2570
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
+=======
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -648,6 +667,7 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedIDs: 40300000
     m_LastClickedID: 12352
     m_ExpandedIDs: 000000001829000082290000f42a0000f62a00005e2c0000f82c00001a2d0000b42e00006a2f00005830000000ca9a3bffffff7f
@@ -662,6 +682,11 @@ MonoBehaviour:
     m_ExpandedIDs: 00000000322500009c2500000e27000010270000782800001229000034290000d22a0000882b0000762c000000ca9a3bffffff7f
 >>>>>>> 91798890e57a657d136cf530b414818f294a2570
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
+=======
+    m_SelectedIDs: 6a2f0000
+    m_LastClickedID: 12138
+    m_ExpandedIDs: 000000001829000082290000f42a0000f62a00005e2c0000f82c00001a2d0000b42e00006a2f00005830000000ca9a3bffffff7f
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -690,6 +715,7 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000001829000082290000f42a0000f62a00005e2c0000f82c00001a2d0000b42e00006a2f00005830000000ca9a3bffffff7f
 =======
 <<<<<<< HEAD
@@ -698,6 +724,9 @@ MonoBehaviour:
     m_ExpandedIDs: 00000000322500009c2500000e27000010270000782800001229000034290000d22a0000882b0000762c0000
 >>>>>>> 91798890e57a657d136cf530b414818f294a2570
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
+=======
+    m_ExpandedIDs: 000000001829000082290000f42a0000f62a00005e2c0000f82c00001a2d0000b42e00006a2f000058300000
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -723,20 +752,18 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 0c070000
     m_LastClickedInstanceID: 1804
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000052270000622c0000e82d000076300000
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
     m_SelectedInstanceIDs: 04390000
     m_LastClickedInstanceID: 14596
     m_HadKeyboardFocusLastEvent: 1
-=======
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
->>>>>>> 91798890e57a657d136cf530b414818f294a2570
     m_ExpandedInstanceIDs: c623000052270000622c0000
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
     m_RenameOverlay:
@@ -845,9 +872,14 @@ MonoBehaviour:
 =======
     width: 352
     height: 947
+<<<<<<< HEAD
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
 >>>>>>> 26c58eea972cdab611068630bebf2b0495fa56ec
+=======
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
+>>>>>>> parent of 26c58ee... Merge branch 'master' of https://github.com/sean6258/traditProjectGit
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
