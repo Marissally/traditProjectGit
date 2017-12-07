@@ -19,26 +19,33 @@ public class PlayerTracker : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (P1View.readied == true)
-        {
-            print("readied");
-            varTrack.P1enabled = true;
-            print("enabled");
-        }
+		if (P1View.readied == true) {
+			print ("p1 readied");
+			varTrack.P1enabled = true;
+			print ("p1 enabled");
+		} else {
+			varTrack.P1enabled = false;
+		}
 
-        if (P2View.readied == true)
-        {
-            varTrack.P2enabled = true;
-        }
+		if (P2View.readied == true) {
+			print ("p2 readied");
+			varTrack.P2enabled = true;
+		} else {
+			varTrack.P2enabled = false;
+		}
 
-        if (P3View.readied == true)
-        {
-            varTrack.P3enabled = true;
-        }
+		if (P3View.readied == true) {
+			print ("p3 readied");
+			varTrack.P3enabled = true;
+		} else {
+			varTrack.P3enabled = false;
+		}
 
-        if (P4View.readied == true)
-        {
-            varTrack.P4enabled = true;
-        }
+		if (P4View.readied == true) {
+			print ("p4 readied");
+			varTrack.P4enabled = true;
+		} else {
+			varTrack.P4enabled = false;
+		}
     }
 }
