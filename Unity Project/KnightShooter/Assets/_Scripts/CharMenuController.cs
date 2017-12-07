@@ -12,15 +12,18 @@ public class CharMenuController : MonoBehaviour {
 	public Image readiedImage;
     public Text readyText;
 	public SpriteRenderer Player;
+	public SpriteRenderer face;
     public KeyCode confirm;
     public KeyCode cancel;
 
 	// Use this for initialization
 	void Start ()
     {
+		face.enabled = false;
         readiedImage.enabled = false;
 		readied = false;
         Player.enabled = false;
+
         //readyImage = GameObject.Find ("readyImage").GetComponent<Image>();
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
@@ -90,6 +93,7 @@ public class CharMenuController : MonoBehaviour {
 			readied = true;
             readyText.color = new Color32 (220, 220, 220, 100);
 			Player.enabled = true;
+			face.enabled = true;
             readiedImage.enabled = true;
             readyText.enabled = false;
 		}
