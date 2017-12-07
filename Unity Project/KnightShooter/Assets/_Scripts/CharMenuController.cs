@@ -115,6 +115,7 @@ public class CharMenuController : MonoBehaviour {
 
             else
             {
+                Destroy(GameObject.FindObjectOfType<variableTracker>().gameObject);
                 SceneManager.LoadScene(0);
             }
         }
