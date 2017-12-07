@@ -43,7 +43,7 @@ public class variableTracker : MonoBehaviour
 		winDone = false;
 		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) 
 		{
-			startButton = KeyCode.JoystickButton9;
+			startButton = KeyCode.JoystickButton7;
 		}
 		if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor) 
 		{

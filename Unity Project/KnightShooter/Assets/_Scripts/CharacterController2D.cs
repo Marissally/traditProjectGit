@@ -218,12 +218,23 @@ public class CharacterController2D : MonoBehaviour {
 					shotgun.transform.rotation = Quaternion.Euler(0, 0, 90);
 					bazooka.transform.rotation = Quaternion.Euler(0, 0, 90);
                 }
-
-                if (_verticalAim == -1)
+                else if (_verticalAim == -1)
                 {
 					pistol.transform.rotation = Quaternion.Euler(0, 0, -90);
 					shotgun.transform.rotation = Quaternion.Euler(0, 0, -90);
 					bazooka.transform.rotation = Quaternion.Euler(0, 0, -90);
+                }
+                else if (_verticalAim > 0)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, 45);
+                    shotgun.transform.rotation = Quaternion.Euler(0, 0, 45);
+                    bazooka.transform.rotation = Quaternion.Euler(0, 0, 45);
+                }
+                else if (_verticalAim < 0)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, -45);
+                    shotgun.transform.rotation = Quaternion.Euler(0, 0, -45);
+                    bazooka.transform.rotation = Quaternion.Euler(0, 0, -45);
                 }
             }
 
@@ -236,11 +247,23 @@ public class CharacterController2D : MonoBehaviour {
 					bazooka.transform.rotation = Quaternion.Euler(0, 0, -90);
                 }
 
-                if (_verticalAim == -1)
+                else if (_verticalAim == -1)
                 {
 					pistol.transform.rotation = Quaternion.Euler(0, 0, 90);
 					shotgun.transform.rotation = Quaternion.Euler(0, 0, 90);
 					bazooka.transform.rotation = Quaternion.Euler(0, 0, 90);
+                }
+                else if (_verticalAim > 0)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, -45);
+                    shotgun.transform.rotation = Quaternion.Euler(0, 0, -45);
+                    bazooka.transform.rotation = Quaternion.Euler(0, 0, -45);
+                }
+                else if (_verticalAim < 0)
+                {
+                    pistol.transform.rotation = Quaternion.Euler(0, 0, 45);
+                    shotgun.transform.rotation = Quaternion.Euler(0, 0, 45);
+                    bazooka.transform.rotation = Quaternion.Euler(0, 0, 45);
                 }
             }
 

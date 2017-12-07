@@ -1,5 +1,5 @@
 5.6.1f1:3.3.0.2
-StandaloneWindows64
+StandaloneWindows
 E:/Unity/Editor/Data/Managed/UnityEngine.dll
 E:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 E:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
