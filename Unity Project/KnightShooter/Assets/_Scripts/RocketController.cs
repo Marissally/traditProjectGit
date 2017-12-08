@@ -9,11 +9,15 @@ public class RocketController : MonoBehaviour {
 
 	Collider2D[] explodeRadius;
     public CharacterController2D spawnOrigin;
+    private AudioSource audManager;
+    public AudioClip travelSound;
+    public AudioClip explodeSound;
 
 	// Use this for initialization
 	void Start () {
 		explodeRadius = new Collider2D[20];
 		_anim = explo.GetComponent<Animator> ();
+        audManager.PlayOneShot(travelSound);
 
 	}
 	
@@ -27,6 +31,7 @@ public class RocketController : MonoBehaviour {
         
 		if ((collision.gameObject.tag == "Player") || (collision.gameObject.tag == "DestructiblePlat") || (collision.gameObject.tag == "IndestructiblePlat") || (collision.gameObject.tag == "DamagablePlat"))
         {
+            audManager.PlayOneShot(explodeSound);
 			if (collision.gameObject.tag == "Player")
             {
                	CharacterController2D player = collision.gameObject.GetComponent<CharacterController2D>();

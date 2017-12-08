@@ -15,6 +15,9 @@ public class CharMenuController : MonoBehaviour {
 	public SpriteRenderer face;
     public KeyCode confirm;
     public KeyCode cancel;
+    private AudioSource audManager;
+    public AudioClip confirmSound;
+    public AudioClip cancelSound;
 
 	// Use this for initialization
 	void Start ()
@@ -96,6 +99,7 @@ public class CharMenuController : MonoBehaviour {
 			face.enabled = true;
             readiedImage.enabled = true;
             readyText.enabled = false;
+            audManager.PlayOneShot(confirmSound);
 		}
 
 		if (Input.GetKeyDown (cancel)) 
@@ -108,11 +112,13 @@ public class CharMenuController : MonoBehaviour {
         {
             readyText.color = new Color32(255, 255, 255, 100);
             readiedImage.color = new Color32(255, 255, 255, 100);
+            audManager.PlayOneShot(cancelSound);
 
             if (readied == true)
             {
                 readied = false;
                 Player.enabled = false;
+                face.enabled = false;
                 readiedImage.enabled = false;
                 readyText.enabled = true;
             }

@@ -7,6 +7,10 @@ public class VertMenuController : MonoBehaviour {
 
     public EventSystem eventSystem;
     public GameObject selectedObject;
+    public AudioClip movementSound;
+    public AudioClip confirmSound;
+    public AudioClip cancelSound;
+    private AudioSource audManager;
     private bool buttonSelected;
 
 	// Use this for initialization
@@ -21,6 +25,7 @@ public class VertMenuController : MonoBehaviour {
 		if (Input.GetAxisRaw("Vertical_1") != 0 && buttonSelected == false)
         {
             eventSystem.SetSelectedGameObject(selectedObject);
+            audManager.PlayOneShot(movementSound);
             buttonSelected = true;
         }
 	}
