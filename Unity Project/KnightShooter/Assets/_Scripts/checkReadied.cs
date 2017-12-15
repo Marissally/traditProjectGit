@@ -12,8 +12,7 @@ public class checkReadied : MonoBehaviour {
     public CharMenuController P4View;
     public Image startNotifier;
 	private variableTracker vt;
-	public KeyCode startButton;
-	public static int p;
+    public KeyCode startButton;
 
     // Use this for initialization
     void Start () {
@@ -28,7 +27,6 @@ public class checkReadied : MonoBehaviour {
         {
             startButton = KeyCode.JoystickButton9;
         }
-		p = UnityEngine.Random.Range(2, 4);
     }
 	
 	// Update is called once per frame
@@ -46,12 +44,9 @@ public class checkReadied : MonoBehaviour {
         if (Input.GetKeyDown(startButton) && startNotifier.enabled)
         {
             //load random level scene
-            
+            //int p = UnityEngine.Random.Range(2, 4);
 			vt.P1enabled = true;
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
-	public static int GetP(){
-		return p;
-	}
 }

@@ -90,9 +90,9 @@ public class CharMenuController : MonoBehaviour {
 
 		if (Input.GetKeyUp (confirm)) 
 		{
-			Player.enabled = true;
 			readied = true;
             readyText.color = new Color32 (220, 220, 220, 100);
+			Player.enabled = true;
 			face.enabled = true;
             readiedImage.enabled = true;
             readyText.enabled = false;
