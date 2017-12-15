@@ -42,12 +42,6 @@ public class CharacterController2D : MonoBehaviour {
 	public float reloadTime;
 	public bool _canShoot;
 
-    private AudioSource audManager;
-    public AudioClip shootSound;
-    public AudioClip walkSound;
-    public AudioClip crouchSound;
-    public AudioClip powerupSound;
-
 
 
     // Use this for initialization
@@ -320,7 +314,7 @@ public class CharacterController2D : MonoBehaviour {
             shotgun.flipX = false;
             shieldImage.flipX = true;
 			crown.flipX = false;
-        }
+		}
         if (!_grounded)
         {
             _horizontalVelocity *= _airControl;
@@ -347,7 +341,6 @@ public class CharacterController2D : MonoBehaviour {
             _crouched = true;
             aimType = "360";
 			this.transform.localScale = new Vector3 (1, .5f, 1);
-            audManager.PlayOneShot(crouchSound);
         }
 
         if(Input.GetKeyUp(crouchButton))
@@ -372,10 +365,6 @@ public class CharacterController2D : MonoBehaviour {
                 if (!_crouched)
                 {
                     _anim.SetBool(walking, true);
-                    if (!_grounded)
-                    {
-                        audManager.PlayOneShot(walkSound);
-                    }
                 }
 
             }
@@ -386,10 +375,6 @@ public class CharacterController2D : MonoBehaviour {
                 if (!_crouched)
                 {
                     _anim.SetBool(walking, true);
-                    if (!_grounded)
-                    {
-                        audManager.PlayOneShot(walkSound);
-                    }
                 }
 
             }
@@ -404,8 +389,7 @@ public class CharacterController2D : MonoBehaviour {
         //use button 18 for mac
         if (Input.GetKeyDown(shootButton) && _canShoot)
         {
-            audManager.PlayOneShot(shootSound);
-            if (shotType == "Default" || ammo == 0) 
+			if (shotType == "Default" || ammo == 0) 
 			{
 				reloadTime = .25f;
 				Rigidbody2D bullet = Instantiate (_shot, transform.position, transform.rotation) as Rigidbody2D;
@@ -763,7 +747,6 @@ public class CharacterController2D : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Powerup")
         {
-            audManager.PlayOneShot(powerupSound);
             //check for powerup
             if (collision.gameObject.name == "shotgunPower(Clone)")
             {

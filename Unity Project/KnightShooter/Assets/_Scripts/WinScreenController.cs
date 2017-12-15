@@ -2,50 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class WinScreenController : MonoBehaviour {
 
-    public List<GameObject> border;
-	public Material borderM;
-    public Material P1glow;
-    public Material P2glow;
-    public Material P3glow;
-    public Material P4glow;
-    private variableTracker varTracker;
+
+	public GameObject wins1;
+	public GameObject wins2;
+	public GameObject wins3;
+	public Image charBody;
+	public Image charFace;
+	public Material border;
+	public CharacterCardController card;
+    public Material glow;
+	private variableTracker varTracker;
 	private bool transformed;
 
     // Use this for initialization
     void Start () {
 		varTracker = GameObject.Find("variableTracker").GetComponent<variableTracker>();
-        border = new List<GameObject>(GameObject.FindGameObjectsWithTag("IndestructiblePlat"));
     }
 	
 	// Update is called once per frame
 	void Update () {
 		if (varTracker.pointsDelivered && !varTracker.winDone) 
 		{
-            if (varTracker.winText == "Player 1 Wins!! Press Start to continue")
-            {
-                border.GetComponent<Renderer>().material = P1glow;
-            }
-
-            if (varTracker.winText == "Player 2 Wins!! Press Start to continue")
-            {
-                border.GetComponent<Renderer>().material = P2glow;
-            }
-
-            if (varTracker.winText == "Player 3 Wins!! Press Start to continue")
-            {
-                border.GetComponent<Renderer>().material = P3glow;
-            }
-
-            if (varTracker.winText == "Player 4 Wins!! Press Start to continue")
-            {
-                border.GetComponent<Renderer>().material = P4glow;
-            }
-
-            print("changed");
-			varTracker.winDone = true;
+			transform.DOMoveX (3, 1);
+			transformed = true;
+            print("Moved");
+			if (transformed) 
+			{
+				if (card.wins1.GetComponent<Renderer>().material = glow) 
+				{
+                    wins1.GetComponent<Renderer>().material = glow;
+                    print("Win1");
+                }
+				if (card.wins2.GetComponent<Renderer>().material = glow) 
+				{
+                    wins2.GetComponent<Renderer>().material = glow;
+                }
+				if (card.wins3.GetComponent<Renderer>().material = glow) 
+				{
+                    wins3.GetComponent<Renderer>().material = glow;
+                }
+				varTracker.winDone = true;
+                print("Done");
 			}
 		}
 	}
