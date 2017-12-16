@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/_Scenes/MainMenu.unity
-=======
-- path: Assets/_Scenes/BetaLevel.unity
->>>>>>> b3a00365a7b695f8ac7309129b6f16d00ccbef7c
   isLoaded: 1
   isActive: 1
