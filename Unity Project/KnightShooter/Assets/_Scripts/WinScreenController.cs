@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class WinScreenController : MonoBehaviour {
 
@@ -27,7 +26,7 @@ public class WinScreenController : MonoBehaviour {
 	void Update () {
 		if (varTracker.pointsDelivered && !varTracker.winDone) 
 		{
-			transform.DOMoveX (3, 1);
+			
 			transformed = true;
             print("Moved");
 			if (transformed) 

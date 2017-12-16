@@ -13,11 +13,12 @@ public class checkReadied : MonoBehaviour {
     public Image startNotifier;
 	private variableTracker vt;
     public KeyCode startButton;
-
+    public int p;
     // Use this for initialization
     void Start () {
         startNotifier.enabled = false;
 		vt = GameObject.FindObjectOfType<variableTracker> ();
+        p = vt.GetP();
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
             startButton = KeyCode.JoystickButton7;
@@ -44,9 +45,8 @@ public class checkReadied : MonoBehaviour {
         if (Input.GetKeyDown(startButton) && startNotifier.enabled)
         {
             //load random level scene
-            //int p = UnityEngine.Random.Range(2, 4);
 			vt.P1enabled = true;
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(p);
         }
     }
 }

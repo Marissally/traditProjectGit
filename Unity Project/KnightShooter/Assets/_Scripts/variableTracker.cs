@@ -26,6 +26,7 @@ public class variableTracker : MonoBehaviour
 	public bool P3winning;
 	public bool P4winning;
 	public KeyCode startButton;
+    public int p;
 
     // Use this for initialization
     void Start ()
@@ -41,7 +42,8 @@ public class variableTracker : MonoBehaviour
         DontDestroyOnLoad(this);
         pointsDelivered = false;
 		winDone = false;
-		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) 
+        p = UnityEngine.Random.Range(2, 4);
+        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) 
 		{
 			startButton = KeyCode.JoystickButton7;
 		}
@@ -54,7 +56,7 @@ public class variableTracker : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        if (SceneManager.GetActiveScene().buildIndex == p)
         {
             players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
             cards = new List<GameObject>(GameObject.FindGameObjectsWithTag("Card"));
@@ -205,8 +207,12 @@ public class variableTracker : MonoBehaviour
             else
             {
                 pointsDelivered = false;
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(p);
             }
         }
+    }
+    public int GetP()
+    {
+        return p;
     }
 }
